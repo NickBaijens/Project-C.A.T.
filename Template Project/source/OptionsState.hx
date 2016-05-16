@@ -12,7 +12,7 @@ class OptionsState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		add(new FlxText(5, 0, "OPTIONS BE HERE", 30));
+		add(new FlxText(5, 0, "OPTIONS ARE GOING TO BE HERE", 30));
 		add(new FlxButton(5, 40, "Menu", showMainMenu));
 	}
 	

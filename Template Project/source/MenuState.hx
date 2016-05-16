@@ -12,7 +12,7 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		add(new FlxButton(5, 0, "BLAAAH", startGame));
+		add(new FlxButton(5, 0, "Start Game", startGame));
 		add(new FlxButton(5, 20, "Options", showOptions));
 		add(new FlxButton(5, 40, "Exit", exitGame));
 	}

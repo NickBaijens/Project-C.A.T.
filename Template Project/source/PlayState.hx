@@ -12,7 +12,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		add(new FlxText(5, 0, "GAME BE HERE", 30));
+		add(new FlxText(5, 0, "GAME IS GOING TO BE HERE", 30));
 		add(new FlxButton(5, 40, "Menu", showMenu));
 	}
 	
