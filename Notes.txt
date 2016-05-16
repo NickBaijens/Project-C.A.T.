@@ -1,0 +1,2 @@
+Notes on important information and links
+Demos: http://haxeflixel.com/demos/
