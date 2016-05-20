@@ -10,7 +10,7 @@ class TestClient
         this.client.onDisconnection = onDisconnection;
         this.client.protocol = new anette.Protocol.Prefixed();
         this.client.timeout = 300;
-        this.client.connect("192.168.1.19", 32000);
+        this.client.connect("145.37.51.37", 32000);
 
         #if flash
         flash.Lib.current.stage.addEventListener(flash.events.Event.ENTER_FRAME,
