@@ -1,0 +1,7 @@
+# compile.hxml
+-neko TestClient.n
+-main TestClient.hx
+
+--next
+-neko TestServer.n
+-main TestServer.hx
