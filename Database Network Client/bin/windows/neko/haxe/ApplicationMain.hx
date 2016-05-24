@@ -91,13 +91,13 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "13",
+			build: "17",
 			company: "Dave",
 			file: "Database",
 			fps: 60,
-			name: "Database",
+			name: "DB_Network_Client",
 			orientation: "",
-			packageName: "Database",
+			packageName: "DB_Network_Client",
 			version: "1.0.0",
 			windows: [
 				
@@ -113,7 +113,7 @@ class ApplicationMain {
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
-					title: "Database",
+					title: "DB_Network_Client",
 					vsync: false,
 					width: 800,
 					x: null,
