@@ -511,7 +511,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "17",
+			build: "18",
 			company: "CandyBacon Studios",
 			file: "Last_Quest_HaxeFlixel",
 			fps: 60,
