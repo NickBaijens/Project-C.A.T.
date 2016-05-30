@@ -17,6 +17,7 @@ class PlayState extends FlxState
 		add(new FlxText(5, 0, "GAME IS GOING TO BE HERE", 30));
 		add(new FlxButton(5, 40, "Menu", showMenu));
 		super.create();
+		var game = new Game();
 	}
 	
 	function showMenu():Void
