@@ -1,5 +1,5 @@
 package;
-import Game.Time;
+import Resource;
 
 /**
  * ...
@@ -7,14 +7,15 @@ import Game.Time;
  */
 class Game
 {
-
+	
 	public function new() 
 	{
 		
 	}
 	function createGame()
 	{
-		var time : Game.Time = new Game.Time();
+		var time : Time = new Time();
+		var resourResource = new Resource();
 	}
 	public function createPlayer()
 	{
