@@ -62,24 +62,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		Font.registerFont (__ASSET__flixel_fonts_nokiafc22_ttf);
 		Font.registerFont (__ASSET__flixel_fonts_monsterrat_ttf);
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -87,14 +71,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -114,14 +90,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		
 		
@@ -611,24 +579,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
@@ -638,24 +590,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		path.set ("assets/data/data-goes-here.txt", "assets/data/data-goes-here.txt");
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
-		path.set ("assets/images/chars/princess.json", "assets/images/chars/princess.json");
-		type.set ("assets/images/chars/princess.json", AssetType.TEXT);
-		path.set ("assets/images/chars/princess.png", "assets/images/chars/princess.png");
-		type.set ("assets/images/chars/princess.png", AssetType.IMAGE);
-		path.set ("assets/images/chars/soldier.json", "assets/images/chars/soldier.json");
-		type.set ("assets/images/chars/soldier.json", AssetType.TEXT);
-		path.set ("assets/images/chars/soldier.png", "assets/images/chars/soldier.png");
-		type.set ("assets/images/chars/soldier.png", AssetType.IMAGE);
 		path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
-		path.set ("assets/maps/Atlas_0/base_out_atlas.png", "assets/maps/Atlas_0/base_out_atlas.png");
-		type.set ("assets/maps/Atlas_0/base_out_atlas.png", AssetType.IMAGE);
-		path.set ("assets/maps/Atlas_0/terrain_atlas.png", "assets/maps/Atlas_0/terrain_atlas.png");
-		type.set ("assets/maps/Atlas_0/terrain_atlas.png", AssetType.IMAGE);
-		path.set ("assets/maps/test2.tanim", "assets/maps/test2.tanim");
-		type.set ("assets/maps/test2.tanim", AssetType.TEXT);
-		path.set ("assets/maps/test2.tmx", "assets/maps/test2.tmx");
-		type.set ("assets/maps/test2.tmx", AssetType.TEXT);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
@@ -670,24 +606,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
-		path.set ("images/chars/princess.json", "images/chars/princess.json");
-		type.set ("images/chars/princess.json", AssetType.TEXT);
-		path.set ("images/chars/princess.png", "images/chars/princess.png");
-		type.set ("images/chars/princess.png", AssetType.IMAGE);
-		path.set ("images/chars/soldier.json", "images/chars/soldier.json");
-		type.set ("images/chars/soldier.json", AssetType.TEXT);
-		path.set ("images/chars/soldier.png", "images/chars/soldier.png");
-		type.set ("images/chars/soldier.png", AssetType.IMAGE);
 		path.set ("images/images-go-here.txt", "images/images-go-here.txt");
 		type.set ("images/images-go-here.txt", AssetType.TEXT);
-		path.set ("maps/Atlas_0/base_out_atlas.png", "maps/Atlas_0/base_out_atlas.png");
-		type.set ("maps/Atlas_0/base_out_atlas.png", AssetType.IMAGE);
-		path.set ("maps/Atlas_0/terrain_atlas.png", "maps/Atlas_0/terrain_atlas.png");
-		type.set ("maps/Atlas_0/terrain_atlas.png", AssetType.IMAGE);
-		path.set ("maps/test2.tanim", "maps/test2.tanim");
-		type.set ("maps/test2.tanim", AssetType.TEXT);
-		path.set ("maps/test2.tmx", "maps/test2.tmx");
-		type.set ("maps/test2.tmx", AssetType.TEXT);
 		
 		
 		#elseif html5
@@ -696,31 +616,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/data/data-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
-		id = "assets/images/chars/princess.json";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "assets/images/chars/princess.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/images/chars/soldier.json";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "assets/images/chars/soldier.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "assets/images/images-go-here.txt";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "assets/maps/Atlas_0/base_out_atlas.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/maps/Atlas_0/terrain_atlas.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "assets/maps/test2.tanim";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "assets/maps/test2.tmx";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		id = "assets/music/music-goes-here.txt";
@@ -749,31 +645,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "images/chars/princess.json";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "images/chars/princess.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "images/chars/soldier.json";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "images/chars/soldier.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
 		id = "images/images-go-here.txt";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "maps/Atlas_0/base_out_atlas.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "maps/Atlas_0/terrain_atlas.png";
-		path.set (id, id);
-		type.set (id, AssetType.IMAGE);
-		id = "maps/test2.tanim";
-		path.set (id, id);
-		type.set (id, AssetType.TEXT);
-		id = "maps/test2.tmx";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
 		
@@ -797,14 +669,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		
 		className.set ("flixel/sounds/beep.ogg", __ASSET__flixel_sounds_beep_ogg);
 		type.set ("flixel/sounds/beep.ogg", AssetType.SOUND);
@@ -820,14 +684,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
-		useManifest = true;
 		useManifest = true;
 		
 		
@@ -1551,27 +1407,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
-
-
-
-
-
-
-
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_beep_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_sounds_flixel_ogg extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends null { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-
-
-
-
-
-
-
-
 
 
 
@@ -1583,24 +1423,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
-
-
-
-
-
-
-
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
-
-
-
-
-
-
-
-
 
 
 
