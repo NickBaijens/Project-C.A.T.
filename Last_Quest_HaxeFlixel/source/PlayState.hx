@@ -9,15 +9,14 @@ import flixel.math.FlxMath;
 
 class PlayState extends FlxState
 {
-	
+	public static var instance:FlxState;
 	override public function create():Void
 	{
-		
-		
-		add(new FlxText(5, 0, "GAME IS GOING TO BE HERE", 30));
+		instance = this;
 		add(new FlxButton(5, 40, "Menu", showMenu));
 		super.create();
-		var game = new Game();
+		
+		var game : Game = new Game();
 	}
 	
 	function showMenu():Void

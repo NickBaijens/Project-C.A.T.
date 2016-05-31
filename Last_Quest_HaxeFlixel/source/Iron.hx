@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxSprite;
+import flixel.FlxG;
 /**
  * ...
  * @author Dave
@@ -7,12 +9,16 @@ package;
 class Iron extends Resource
 {
 
-	public function new() 
+	public function new(x:Int, y:Int) 
 	{
-		resourceType = "iron";
-	}
-	override public function generateResource()
-	{
-		
+		super();
+		resourceName = "iron";
+		resourceID = 4;
+		trace("received " + resourceName);
+		var image = new FlxSprite();
+		image.loadGraphic("assets/images/resources/iron.png");
+		image.x = x;
+		image.y = y;
+		PlayState.instance.add(image);
 	}
 }

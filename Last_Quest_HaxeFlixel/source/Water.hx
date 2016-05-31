@@ -1,5 +1,7 @@
 package;
 
+import flixel.FlxSprite;
+import flixel.FlxG;
 /**
  * ...
  * @author Dave
@@ -7,12 +9,16 @@ package;
 class Water extends Resource
 {
 
-	public function new() 
+	public function new(x:Int, y:Int) //creates new resource (and image) with x and y position
 	{
-		resourceType = "water";
-	}
-	override public function generateResource()
-	{
-		
+		super();
+		resourceName = "water";
+		resourceID = 0;
+		trace("received " + resourceName);
+		var image = new FlxSprite();
+		image.loadGraphic("assets/images/resources/water.png");
+		image.x = x;
+		image.y = y;
+		PlayState.instance.add(image);	
 	}
 }
