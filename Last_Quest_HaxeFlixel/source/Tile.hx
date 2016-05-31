@@ -1,28 +1,22 @@
 package;
-import openfl.display.Sprite;
 
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxGraphicAsset;
 
 /**
  * ...
- * @author Dave
+ * @author Nick Baijens
  */
-class Tile extends Sprite;
+class Tile extends FlxSprite
 {
-	
-	public function new() 
+	static var types = ["Grassland tile 64x64.png", "tile calm water 64x64.png"];
+	var type: String = types[1];
+	public function new(i:Int) 
 	{
-		
-	}
-	public function addInventory()
-	{
-		
-	}
-	public function removeInventory()
-	{
-		
-	}
-	public function getTile()
-	{
-		
+		super();
+		type = types[i];
+		loadGraphic("assets/images/"+type);
+		PlayState.instance.add(this);		
 	}
 }
