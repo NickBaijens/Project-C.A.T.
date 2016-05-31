@@ -10,13 +10,23 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
  */
 class Tile extends FlxSprite
 {
-	static var types = ["Grassland tile 64x64.png", "tile sea water2.png"];
-	var type: String = types[1];
+	static var types = ["Grassland tile 64x64.png", "Sea tile 64x64.png", "Dessertland tile 64x64.png", "Rockland tile 64x64.png", "Town NW tile 64x64.png", "Town NE tile 64x64.png", "Town SE tile 64x64.png", "Town SW tile 64x64.png","WaterCalm tile 64x64.png"];
+	var discovered : Bool = false;
+	var type: String = types[8]; 
 	public function new(i:Int) 
 	{
 		super();
 		type = types[i];
-		loadGraphic("assets/images/tiles/"+type);
+		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png")
+		{
+			loadGraphic("assets/images/tiles/" + type);
+		} else if (discovered == true)
+		{
+			loadGraphic("assets/images/tiles/" + type);
+		} else if (discovered == false)
+		{
+			loadGraphic("assets/images/tiles/Dessertland tile 64x64.png");
+		}
 		PlayState.instance.add(this);
 		
 	}

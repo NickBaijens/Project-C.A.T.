@@ -20,12 +20,12 @@ class PlayState extends FlxState
 		instance = this;
 		
 		super.create();
-		
-		bank = new Bank();
 		map = new WorldMap();
+		bank = new Bank();
+		
 		time = new Time();
 		resource = new Resource();
-		player = new Player();
+		player = new Player(map.tiles[0]);
 		resource.generateRandomResource(200, 200); // testing creation of random resource
 		resource.generateResource(1, 300, 300); // testing creation of selected resource
 		add(new FlxButton(5, 40, "Menu", showMenu));
