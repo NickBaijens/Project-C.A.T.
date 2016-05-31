@@ -1,4 +1,6 @@
 package;
+import flixel.FlxState;
+import openfl.events.Event;
 import Resource;
 import WorldMap;
 import Bank;
@@ -7,19 +9,19 @@ import Bank;
  * ...
  * @author Dave
  */
-class Game
+class Game extends FlxState
 {
 	
-	public function new() 
+	override public function create():Void
 	{
-		var map : WorldMap = new WorldMap();
-		var bank : Bank = new Bank();
-		var resource : Resource = new Resource(); // creates initial instance of Resource Class
-		resource.generateRandomResource(200, 200); // testing creation of random resource
-		resource.generateResource(1, 300, 300); // testing creation of selected resource
+		super.create();
+		
+
 	}
-	public function createPlayer()
+	override public function update(Elapsed:Float):Void
 	{
+		super.update(time.deltaTime);
+		
 		
 	}
 }
