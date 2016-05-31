@@ -17,6 +17,7 @@ class PlayState extends FlxState
 		super.create();
 		
 		var game : Game = new Game();
+		var testmap: WorldMap = new WorldMap();
 	}
 	
 	function showMenu():Void

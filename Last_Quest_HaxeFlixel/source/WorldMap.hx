@@ -5,42 +5,39 @@ import flixel.FlxG;
 
 class WorldMap extends FlxSprite
 {
-	var map : Array<Tile> = new Array();
+	var tiles : Array<Tile> = new Array();
+	
     public function new()
     {
         super();
-		displayMap();
 		getMap();
     }
+	
 	public function getMap()
 	{
-		var testmap:Array<Array<Int>> = [
+		//map array. numbers correspond to Tile.types array elements
+		var map:Array<Array<Int>> = [
 		[0, 0, 0, 0],
 		[0, 1, 0, 0],
 		[0, 1, 1, 0],
 		[0, 0, 0, 0],
 		] ;
-		//trace ( testmap[1]);
-		/*for (i in testMap)
+		//for each element in the map, create a tile and position it. Also add it to tiles array for ease of access
+		for (row in 0...map.length) 
 		{
-			var tile = new Tile(0);
-			tile.x = x * 64;
-			tile.y = y * 64;
-			tile.x -= 32;
-			map.push(tile);
-		}*/
-	}
-	public function displayMap()
-	{
-		for (y in 0...20)
-		{
-			for (x in 0...20)
+			for (cell in 0...map[row].length)
 			{
-				
+				var tile = new Tile(map[row][cell]);
+				tile.x = cell * 64;
+				tile.y = row * 64;
+				//offset x and y values here to offset the map position
+				//tile.x -= 32;
+				//tile.y -= 32;
+				tiles.push(tile);
 			}
 		}
-		
 	}
+	
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
