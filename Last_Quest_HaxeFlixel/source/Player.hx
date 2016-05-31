@@ -24,8 +24,8 @@ class Player extends FlxSprite
 		PlayState.instance.add(new FlxButton(5, 180, "Add Clay", addResource.bind(5)));
 		
 		makeGraphic(16, 16, FlxColor.BLUE);
-		this.x = pos.x+24;
-		this.y = pos.y+24;
+		this.x = pos.x+24+64;
+		this.y = pos.y+24+64;
 		PlayState.instance.add(this);
 	}
 	public function moveTo(tile: Tile)
