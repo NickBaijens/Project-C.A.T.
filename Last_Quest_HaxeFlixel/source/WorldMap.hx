@@ -5,7 +5,7 @@ import flixel.FlxG;
 
 class WorldMap extends FlxSprite
 {
-	var tiles : Array<Tile> = new Array();
+	public var tiles : Array<Tile> = new Array();
 	
     public function new()
     {
