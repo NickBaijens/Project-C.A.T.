@@ -17,6 +17,7 @@ class Tile extends FlxSprite
 		super();
 		type = types[i];
 		loadGraphic("assets/images/tiles/"+type);
-		PlayState.instance.add(this);		
+		PlayState.instance.add(this);
+		
 	}
 }
