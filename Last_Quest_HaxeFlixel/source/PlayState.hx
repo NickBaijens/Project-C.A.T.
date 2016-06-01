@@ -6,26 +6,29 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
+import flixel.input.mouse.FlxMouseEventManager;
 
 class PlayState extends FlxState
 {
-	public static var instance:FlxState;
+	public static var instance : PlayState;
 	public static var bank : Bank;
-	var map : WorldMap;
+	public var map : WorldMap;
 	var time : Time;
 	var resource : Resource; // creates initial instance of Resource Class
-	var player : Player;
+	public var player : Player;
+	
 	override public function create():Void
 	{
 		instance = this;
 		
 		super.create();
 		
-		bank = new Bank();
+		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();
+		bank = new Bank();
+		player = new Player(map.tiles[0]);
 		time = new Time();
-		resource = new Resource();
-		player = new Player();
+		resource = new Resource();		
 		resource.generateRandomResource(200, 200); // testing creation of random resource
 		resource.generateResource(1, 300, 300); // testing creation of selected resource
 		add(new FlxButton(5, 40, "Menu", showMenu));
