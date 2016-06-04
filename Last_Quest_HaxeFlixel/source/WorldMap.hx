@@ -37,6 +37,7 @@ class WorldMap extends FlxSprite
 		/*16*/[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		] ;
 		//for each element in the map, create a tile and position it. Also add it to tiles array for ease of access
+		var tileCurrentID: Int = 0;
 		for (row in 0...map.length) 
 		{
 			
@@ -45,8 +46,8 @@ class WorldMap extends FlxSprite
 				var tile = new Tile(map[row][cell]);
 				tile.x = cell * 64;
 				tile.y = row * 64;
-				tile.instanceID = tilecurrentid;
-				tilecurrentid += 1;
+				tile.instanceID = tileCurrentID;
+				tileCurrentID += 1;
 				//offset x and y values here to offset the map position
 				//tile.x -= 32;
 				//tile.y -= 32;
