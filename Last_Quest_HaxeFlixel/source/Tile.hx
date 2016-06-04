@@ -44,7 +44,28 @@ class Tile extends FlxSprite
 		if (FlxMath.distanceBetween(player,this)==64)
 		{
 			player.moveTo(this);
+			trace(this.discovered);
+			if (this.discovered == false)
+			{
+				this.discovered = true;
+				updateTile();
+			}
 		}
 		
-	}	
+	}
+	function updateTile()
+	{
+		PlayState.instance.remove(this);
+		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png")
+		{
+			loadGraphic("assets/images/tiles/" + type);
+		} else if (discovered == true)
+		{
+			loadGraphic("assets/images/tiles/" + type);
+		} else if (discovered == false)
+		{
+			loadGraphic("assets/images/tiles/Dessertland tile 64x64.png");
+		}
+		PlayState.instance.add(this);
+	}
 }
