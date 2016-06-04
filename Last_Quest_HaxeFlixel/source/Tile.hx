@@ -1,36 +1,37 @@
 package;
 
+import flixel.math.FlxMath;
+import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.input.mouse.FlxMouseEventManager;
 
-/**
- * ...
- * @author Nick Baijens
- */
 class Tile extends FlxSprite
 {
-	static var types = ["Grassland tile 64x64.png", "Sea tile 64x64.png", "Dessertland tile 64x64.png", "Rockland tile 64x64.png", "Town NW tile 64x64.png", "Town NE tile 64x64.png", "Town SE tile 64x64.png", "Town SW tile 64x64.png","WaterCalm tile 64x64.png"];
-	public var tileInv : Array <Int> = new Array();
-	var discovered : Bool = false;
-	var type: String = types[8]; 
-	public function new(i:Int) 
+	static var types = ["Grassland tile 64x64.png", "tile sea water2.png"];
+	var type: String = types[1];
+	public var instanceID: Int = 0;
+	
+	public function new(tiletype:Int) 
 	{
 		super();
-		type = types[i];
-		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png")
-		{
-			loadGraphic("assets/images/tiles/" + type);
-		} else if (discovered == true)
-		{
-			loadGraphic("assets/images/tiles/" + type);
-		} else if (discovered == false)
-		{
-			loadGraphic("assets/images/tiles/Dessertland tile 64x64.png");
-		}
-		PlayState.instance.add(this);
 		
-		tileInv.push(0); // test adding water to inventory
+		type = types[tiletype];
+		loadGraphic("assets/images/tiles/"+type);
+		PlayState.instance.add(this);
+		FlxMouseEventManager.add(this, onDown, null, null, null);
 		
 	}
+	
+	private function onDown(sprite:FlxSprite)
+	{
+		var player  = PlayState.instance.player;
+		
+		if (FlxMath.distanceBetween(player,this)==64)
+		{
+			player.moveTo(this);
+		}
+		
+	}	
 }
