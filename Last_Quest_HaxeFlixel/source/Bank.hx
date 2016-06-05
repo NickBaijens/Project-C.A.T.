@@ -21,7 +21,7 @@ class Bank
 	public var wood : Int = 0;//3
 	public var iron : Int = 0;//4
 	public var clay : Int = 0;//5
-	public var bankDisplay:FlxSprite;
+	var uiBG = new FlxSprite();
 	var image0 = new FlxSprite();
 	var text0 = new FlxText(545, 200, "", 15);
 	var image1 = new FlxSprite();
@@ -42,6 +42,8 @@ class Bank
 		trace(bankInv);
 		bankInv.sort(function(a,b) return a-b);
 		trace(bankInv);
+		uiBG.loadGraphic("assets/images/UI/test.png");
+		PlayState.instance.add(uiBG);
 		image0.loadGraphic("assets/images/resources/water.png");
 		PlayState.instance.add(image0);
 		PlayState.instance.add(text0);
@@ -75,6 +77,7 @@ class Bank
 	}
 	public function hide()
 	{
+		PlayState.instance.remove(uiBG);
 		PlayState.instance.remove(image0);
 		PlayState.instance.remove(text0);
 		PlayState.instance.remove(image1);
@@ -91,6 +94,9 @@ class Bank
 	}
 	public function show()
 	{
+		uiBG.x = PlayState.instance.cameraFocus.x + 390;
+		uiBG.y = PlayState.instance.cameraFocus.y + -210;
+		PlayState.instance.add(uiBG);
 		image0.x = PlayState.instance.cameraFocus.x + 410;
 		image0.y = PlayState.instance.cameraFocus.y + -200;
 		PlayState.instance.add(image0);
