@@ -20,17 +20,7 @@ class Tile extends FlxSprite
 		super();
 		
 		type = types[tiletype];
-		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png")
-		{
-			loadGraphic("assets/images/tiles/" + type);
-		} else if (discovered == true)
-		{
-			loadGraphic("assets/images/tiles/" + type);
-		} else if (discovered == false)
-		{
-			loadGraphic("assets/images/tiles/Dessertland tile 64x64.png");
-		}
-		PlayState.instance.add(this);
+		updateTile(); //sets correct image for (un)discovered tiles
 		
 		tileInv.push(0); // test adding water to inventory
 		FlxMouseEventManager.add(this, onDown, null, null, null);
