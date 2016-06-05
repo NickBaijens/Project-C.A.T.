@@ -3,6 +3,8 @@ import flixel.FlxSprite;
 import flixel.FlxG;
 import openfl.geom.Point;
 import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
+import flixel.math.FlxMath;
 
 class Player extends FlxSprite
 {
@@ -15,17 +17,23 @@ class Player extends FlxSprite
 	var upBttn: FlxButton;
 	var downBttn: FlxButton;
 	
+	var player = new FlxSprite();
+	
 	
 	public function new(pos: Tile) 
 	{
 		instance = this;
 		
 		super();
-		makeGraphic(128, 128, 0x554b5376);
+		player.loadGraphic("assets/images/characters/CharacterMockup.png");
+		makeGraphic(128, 128, FlxColor.TRANSPARENT);
 		this.x = pos.x;
 		this.y = pos.y;
+		player.x = this.x + (64 - (player.width / 2));
+		player.y = this.y + (64 - (player.height / 2));
 		currentTile = pos;
 		PlayState.instance.add(this);
+		PlayState.instance.add(player);
 		
 		//update camera position
 		PlayState.instance.cameraFocus.x = this.x;
@@ -36,6 +44,8 @@ class Player extends FlxSprite
 	{
 		this.x = tile.x;
 		this.y = tile.y;
+		player.x = this.x + (64 - (player.width / 2));
+		player.y = this.y + (64 - (player.height / 2));
 		//refocus camera
 		PlayState.instance.cameraFocus.x = this.x;
 		PlayState.instance.cameraFocus.y = this.y;
