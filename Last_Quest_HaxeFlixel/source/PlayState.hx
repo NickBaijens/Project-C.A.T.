@@ -44,8 +44,6 @@ class PlayState extends FlxState
 		//later we will get the tile from the database (I guess) but finding the town tiles is a bit tedious.
 		time = new Time();
 		resource = new Resource();		
-		resource.generateRandomResource(200, 200); // testing creation of random resource
-		resource.generateResource(1, 300, 300); // testing creation of selected resource
 		add(new FlxButton(5, 40, "Menu", showMenu));
 		
 	}

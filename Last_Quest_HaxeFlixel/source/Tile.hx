@@ -34,8 +34,18 @@ class Tile extends FlxSprite
 		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png")
 		{
 			player.moveTo(this);
+			if (this.type != "Town NW tile 128x128.png" && this.type != "Town NE tile 128x128.png" && this.type != "Town SE tile 128x128.png"  && this.type != "Town SW tile 128x128.png")
+			{
+				Resource.instance.generateRandomResource();
+				if (Resource.instance.generatedResource == 0 || Resource.instance.generatedResource == 1 || Resource.instance.generatedResource == 2 || Resource.instance.generatedResource == 3 || Resource.instance.generatedResource == 4 || Resource.instance.generatedResource == 5)
+				{
+					tileInv.push(Resource.instance.generatedResource);
+					trace("tile inventory " + tileInv);
+				}
+				Resource.instance.generatedResource = null;
+			}
 			
-			trace(this.discovered);
+			//trace(this.discovered);
 			
 			this.discovered = true;
 			PlayState.instance.map.tiles[this.instanceID + 1].discovered = true;
