@@ -9,7 +9,7 @@ import flixel.input.mouse.FlxMouseEventManager;
 
 class Tile extends FlxSprite
 {
-	static var types = ["Grassland tile 64x64.png", "Sea tile 64x64.png", "Dessertland tile 64x64.png", "Rockland tile 64x64.png", "Town NW tile 64x64.png", "Town NE tile 64x64.png", "Town SE tile 64x64.png", "Town SW tile 64x64.png","WaterCalm tile 64x64.png","Undiscovered tile 64x64.png","TownGrassland tile 64x64.png"];
+	static var types = ["Grassland tile 128x128.png", "Sea tile 128x128.png", "Dessertland tile 128x128.png", "Rockland tile 128x128.png", "Town NW tile 128x128.png", "Town NE tile 128x128.png", "Town SE tile 128x128.png", "Town SW tile 128x128.png","WaterCalm tile 128x128.png","Undiscovered tile 128x128.png","TownGrassland tile 128x128.png"];
 	public var tileInv : Array <Int> = new Array();
 	var discovered : Bool = false;
 	var type: String = types[1];
@@ -31,7 +31,7 @@ class Tile extends FlxSprite
 	{
 		var player  = PlayState.instance.player;
 		
-		if (FlxMath.distanceBetween(player,this)==64 && this.type != "Sea tile 64x64.png" && this.type != "WaterCalm tile 64x64.png")
+		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png")
 		{
 			player.moveTo(this);
 			
@@ -42,10 +42,10 @@ class Tile extends FlxSprite
 			PlayState.instance.map.tiles[this.instanceID + 1].updateTile();
 			PlayState.instance.map.tiles[this.instanceID - 1].discovered = true;
 			PlayState.instance.map.tiles[this.instanceID - 1].updateTile();
-			PlayState.instance.map.tiles[this.instanceID + 18].discovered = true;
-			PlayState.instance.map.tiles[this.instanceID + 18].updateTile();
-			PlayState.instance.map.tiles[this.instanceID - 18].discovered = true;
-			PlayState.instance.map.tiles[this.instanceID - 18].updateTile();
+			PlayState.instance.map.tiles[this.instanceID + 20].discovered = true;
+			PlayState.instance.map.tiles[this.instanceID + 20].updateTile();
+			PlayState.instance.map.tiles[this.instanceID - 20].discovered = true;
+			PlayState.instance.map.tiles[this.instanceID - 20].updateTile();
 			updateTile();
 		}
 		
@@ -53,7 +53,7 @@ class Tile extends FlxSprite
 	function updateTile()
 	{
 		PlayState.instance.remove(this);
-		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png" || type == "TownGrassland tile 64x64.png")
+		if (type == "Town NW tile 128x128.png" || type == "Town NE tile 128x128.png" || type == "Town SE tile 128x128.png" || type == "Town SW tile 128x128.png" || type == "TownGrassland tile 128x128.png")
 		{
 			loadGraphic("assets/images/tiles/" + type);
 			this.discovered = true;
@@ -62,7 +62,7 @@ class Tile extends FlxSprite
 			loadGraphic("assets/images/tiles/" + type);
 		} else if (discovered == false)
 		{
-			loadGraphic("assets/images/tiles/Undiscovered tile 64x64.png");
+			loadGraphic("assets/images/tiles/Undiscovered tile 128x128.png");
 		}
 		PlayState.instance.add(this);
 	}

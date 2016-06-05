@@ -17,7 +17,7 @@ class Player extends FlxSprite
 	public function new(pos: Tile) 
 	{
 		super();
-		makeGraphic(64, 64, 0x554b5376);
+		makeGraphic(128, 128, 0x554b5376);
 		this.x = pos.x;
 		this.y = pos.y;
 		currentTile = pos;
@@ -33,11 +33,11 @@ class Player extends FlxSprite
 		this.x = tile.x;
 		this.y = tile.y;
 		currentTile = tile;
-		if (currentTile == PlayState.instance.map.tiles[152]) //checks if player is in the bank
+		if (currentTile == PlayState.instance.map.tiles[189]) //checks if player is in the bank
 		{
 			trace("in bank");
 			Bank.instance.show();
-		} else if (currentTile != PlayState.instance.map.tiles[152])
+		} else if (currentTile != PlayState.instance.map.tiles[189])
 		{
 			Bank.instance.hide();
 		}
