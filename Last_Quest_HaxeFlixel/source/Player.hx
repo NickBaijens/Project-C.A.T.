@@ -35,6 +35,14 @@ class Player extends FlxSprite
 		this.x = tile.x;
 		this.y = tile.y;
 		currentTile = tile;
+		if (currentTile == PlayState.instance.map.tiles[119]) //checks if player is in the bank
+		{
+			trace("in bank");
+			Bank.instance.show();
+		} else if (currentTile != PlayState.instance.map.tiles[119])
+		{
+			Bank.instance.hide();
+		}
 	}
 	public function getMapZone()
 	{

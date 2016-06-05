@@ -70,6 +70,37 @@ class Bank
 		image5.y = 395;
 		PlayState.instance.add(image5);
 		PlayState.instance.add(text5);
+		hide();
+	}
+	public function hide()
+	{
+		PlayState.instance.remove(image0);
+		PlayState.instance.remove(text0);
+		PlayState.instance.remove(image1);
+		PlayState.instance.remove(text1);
+		PlayState.instance.remove(image2);
+		PlayState.instance.remove(text2);
+		PlayState.instance.remove(image3);
+		PlayState.instance.remove(text3);
+		PlayState.instance.remove(image4);
+		PlayState.instance.remove(text4);
+		PlayState.instance.remove(image5);
+		PlayState.instance.remove(text5);
+	}
+	public function show()
+	{
+		PlayState.instance.add(image0);
+		PlayState.instance.add(text0);
+		PlayState.instance.add(image1);
+		PlayState.instance.add(text1);
+		PlayState.instance.add(image2);
+		PlayState.instance.add(text2);
+		PlayState.instance.add(image3);
+		PlayState.instance.add(text3);
+		PlayState.instance.add(image4);
+		PlayState.instance.add(text4);
+		PlayState.instance.add(image5);
+		PlayState.instance.add(text5);
 	}
 	
 	public function updateBank()
@@ -85,12 +116,12 @@ class Bank
 		{
 			switch bankInv[i]
 			{	
-				case 0:water += 1;
-				case 1:food += 1;
-				case 2:stone += 1;
-				case 3:wood += 1;
-				case 4:iron += 1;
-				case 5:clay += 1;
+				case 0:water 	+= 1;
+				case 1:food 	+= 1;
+				case 2:stone 	+= 1;
+				case 3:wood 	+= 1;
+				case 4:iron 	+= 1;
+				case 5:clay 	+= 1;
 			}
 		}
 		
