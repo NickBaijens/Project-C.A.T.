@@ -6,6 +6,7 @@ import flixel.ui.FlxButton;
 
 class Player extends FlxSprite
 {
+	static public var instance : Player;
 	public var currentTile: Tile;
 	public var inventory : Array <Resource> = new Array();
 	public var actionPoints:Int = 0;
@@ -14,8 +15,11 @@ class Player extends FlxSprite
 	var upBttn: FlxButton;
 	var downBttn: FlxButton;
 	
+	
 	public function new(pos: Tile) 
 	{
+		instance = this;
+		
 		super();
 		makeGraphic(128, 128, 0x554b5376);
 		this.x = pos.x;
@@ -32,6 +36,10 @@ class Player extends FlxSprite
 	{
 		this.x = tile.x;
 		this.y = tile.y;
+		//refocus camera
+		PlayState.instance.cameraFocus.x = this.x;
+		PlayState.instance.cameraFocus.y = this.y;
+		
 		currentTile = tile;
 		if (currentTile == PlayState.instance.map.tiles[189]) //checks if player is in the bank
 		{
@@ -43,8 +51,7 @@ class Player extends FlxSprite
 		}
 		
 		//update camera position
-		PlayState.instance.cameraFocus.x = this.x;
-		PlayState.instance.cameraFocus.y = this.y;
+		
 	}
 	public function getMapZone()
 	{
