@@ -9,7 +9,7 @@ import flixel.input.mouse.FlxMouseEventManager;
 
 class Tile extends FlxSprite
 {
-	static var types = ["Grassland tile 64x64.png", "Sea tile 64x64.png", "Dessertland tile 64x64.png", "Rockland tile 64x64.png", "Town NW tile 64x64.png", "Town NE tile 64x64.png", "Town SE tile 64x64.png", "Town SW tile 64x64.png","WaterCalm tile 64x64.png"];
+	static var types = ["Grassland tile 64x64.png", "Sea tile 64x64.png", "Dessertland tile 64x64.png", "Rockland tile 64x64.png", "Town NW tile 64x64.png", "Town NE tile 64x64.png", "Town SE tile 64x64.png", "Town SW tile 64x64.png","WaterCalm tile 64x64.png","Undiscovered tile 64x64.png"];
 	public var tileInv : Array <Int> = new Array();
 	var discovered : Bool = false;
 	var type: String = types[1];
@@ -54,7 +54,7 @@ class Tile extends FlxSprite
 			loadGraphic("assets/images/tiles/" + type);
 		} else if (discovered == false)
 		{
-			loadGraphic("assets/images/tiles/Dessertland tile 64x64.png");
+			loadGraphic("assets/images/tiles/Undiscovered tile 64x64.png");
 		}
 		PlayState.instance.add(this);
 	}

@@ -16,7 +16,7 @@ class WorldMap extends FlxSprite
 	public function getMap()
 	{
 		// 0 = grassland, 1 = sea, 2 = dessert, 3 = rock, 4 = Town NW, 5 = Town NE
-		// 6 = Town SE, 7 = Town SW, 8 = WaterCalm
+		// 6 = Town SE, 7 = Town SW, 8 = WaterCalm, 9 = Undiscovered
 		//map array. numbers correspond to Tile.types array elements
 		var map:Array<Array<Int>> = [
 		/*1*/ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
