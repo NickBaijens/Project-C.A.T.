@@ -26,7 +26,8 @@ class PlayState extends FlxState
 		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();
 		bank = new Bank();
-		player = new Player(map.tiles[0]);
+		player = new Player(map.tiles[120]); //is there a better way for the initial spawn of the player?
+		//later we will get the tile from the database (I guess) but finding the town tiles is a bit tedious.
 		time = new Time();
 		resource = new Resource();		
 		resource.generateRandomResource(200, 200); // testing creation of random resource
