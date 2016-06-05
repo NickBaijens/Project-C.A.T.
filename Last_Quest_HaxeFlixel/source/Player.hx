@@ -23,6 +23,9 @@ class Player extends FlxSprite
 		currentTile = pos;
 		PlayState.instance.add(this);
 		
+		//update camera position
+		PlayState.instance.cameraFocus.x = this.x;
+		PlayState.instance.cameraFocus.y = this.y;
 	}
 	
 	public function moveTo(tile: Tile)
@@ -38,6 +41,10 @@ class Player extends FlxSprite
 		{
 			Bank.instance.hide();
 		}
+		
+		//update camera position
+		PlayState.instance.cameraFocus.x = this.x;
+		PlayState.instance.cameraFocus.y = this.y;
 	}
 	public function getMapZone()
 	{

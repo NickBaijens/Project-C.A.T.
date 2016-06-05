@@ -1,16 +1,23 @@
 package;
 
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.input.mouse.FlxMouseEventManager;
+
 
 class PlayState extends FlxState
 {
 	public static var instance : PlayState;
+	
+	private var cameraFollow:FlxCamera;
+	public var cameraFocus:FlxSprite;
+	
 	public static var bank : Bank;
 	public var map : WorldMap;
 	var time : Time;
@@ -20,6 +27,13 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		instance = this;
+		
+		cameraFocus = new FlxSprite();
+		cameraFocus.makeGraphic(1, 1, FlxColor.TRANSPARENT);
+		add(cameraFocus);
+		
+		cameraFollow = FlxG.camera;
+		cameraFollow.follow(cameraFocus, FlxCameraFollowStyle.LOCKON);
 		
 		super.create();
 		
