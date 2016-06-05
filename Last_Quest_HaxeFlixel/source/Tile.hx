@@ -55,6 +55,7 @@ class Tile extends FlxSprite
 		if (type == "Town NW tile 64x64.png" || type == "Town NE tile 64x64.png" || type == "Town SE tile 64x64.png" || type == "Town SW tile 64x64.png" || type == "TownGrassland tile 64x64.png")
 		{
 			loadGraphic("assets/images/tiles/" + type);
+			this.discovered = true;
 		} else if (discovered == true)
 		{
 			loadGraphic("assets/images/tiles/" + type);
