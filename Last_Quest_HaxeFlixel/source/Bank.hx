@@ -70,6 +70,17 @@ class Bank
 		image5.y = 395;
 		PlayState.instance.add(image5);
 		PlayState.instance.add(text5);
+		
+		//
+		//test buttons
+		//PlayState.instance.add(new FlxButton(5, 80, "Add Water", addResource.bind(0)));
+		//PlayState.instance.add(new FlxButton(5, 100, "Add Food", addResource.bind(1)));
+		//PlayState.instance.add(new FlxButton(5, 120, "Add Stone", addResource.bind(2)));
+		//PlayState.instance.add(new FlxButton(5, 140, "Add Wood", addResource.bind(3)));
+		//PlayState.instance.add(new FlxButton(5, 160, "Add Iron", addResource.bind(4)));
+		//PlayState.instance.add(new FlxButton(5, 180, "Add Clay", addResource.bind(5)));
+		//
+		
 		hide();
 	}
 	public function hide()
@@ -86,6 +97,7 @@ class Bank
 		PlayState.instance.remove(text4);
 		PlayState.instance.remove(image5);
 		PlayState.instance.remove(text5);
+	
 	}
 	public function show()
 	{
@@ -101,6 +113,7 @@ class Bank
 		PlayState.instance.add(text4);
 		PlayState.instance.add(image5);
 		PlayState.instance.add(text5);
+
 	}
 	
 	public function updateBank()
