@@ -34,7 +34,7 @@ class Tile extends FlxSprite
 		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png" && player.actionPoints>0)
 		{
 			player.moveTo(this);
-			
+			player.actionPoints -= 1;
 			
 			//trace(this.discovered);
 			
