@@ -12,10 +12,7 @@ class Player extends FlxSprite
 	public var currentTile: Tile;
 	public var inventory : Array <Resource> = new Array();
 	public var actionPoints:Int = 0;
-	var leftBttn: FlxButton;
-	var rightBttn: FlxButton;
-	var upBttn: FlxButton;
-	var downBttn: FlxButton;
+	var apBttnTest: FlxButton;
 	
 	var player = new FlxSprite();
 	
@@ -38,6 +35,9 @@ class Player extends FlxSprite
 		//update camera position
 		PlayState.instance.cameraFocus.x = this.x;
 		PlayState.instance.cameraFocus.y = this.y;
+		updatePlayerActions(6);
+		apBttnTest = new FlxButton(10, 10, "add 6 ap", updatePlayerActions.bind(6));
+		PlayState.instance.add(apBttnTest);
 	}
 	
 	public function moveTo(tile: Tile)
@@ -67,9 +67,10 @@ class Player extends FlxSprite
 	{
 		
 	}
-	public function updatePlayerActions()
+	public function updatePlayerActions(amount: Int):Void
 	{
-		
+		actionPoints += amount;
+		actionPoints -= actionPoints % 6;
 	}
 	public function addResource(ID:Int):Void
 	{
