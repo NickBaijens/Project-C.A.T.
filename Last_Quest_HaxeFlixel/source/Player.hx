@@ -118,7 +118,7 @@ class Player extends FlxSprite
 	public function updatePlayerActions(amount: Int):Void
 	{
 		actionPoints += amount;
-		actionPoints -= actionPoints % 6;
+		actionPoints = actionPoints > 6?6:actionPoints;
 		
 	}
 	public function addResource(ID:Int):Void
