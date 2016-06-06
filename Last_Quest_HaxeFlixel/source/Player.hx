@@ -10,6 +10,8 @@ class Player extends FlxSprite
 {
 	static public var instance : Player;
 	public var currentTile: Tile;
+	public var lastTile : Tile;
+	public var playerMoved : Bool = false;
 	public var inventory : Array <Resource> = new Array();
 	public var actionPoints:Int = 0;
 	var apBttnTest: FlxButton;
@@ -26,9 +28,13 @@ class Player extends FlxSprite
 		makeGraphic(128, 128, FlxColor.TRANSPARENT);
 		this.x = pos.x;
 		this.y = pos.y;
+		
 		player.x = this.x + (64 - (player.width / 2));
 		player.y = this.y + (64 - (player.height / 2));
+		lastTile = pos;
 		currentTile = pos;
+		trace("lastTile.type = " + lastTile.type);
+		trace("currentTile.type = " + currentTile.type);
 		PlayState.instance.add(this);
 		PlayState.instance.add(player);
 		
@@ -42,18 +48,55 @@ class Player extends FlxSprite
 	
 	public function moveTo(tile: Tile)
 	{
-		if (actionPoints > 0 || tile.type == "Town NW tile 128x128.png"|| tile.type == "Town NE tile 128x128.png"|| tile.type == "Town SW tile 128x128.png"|| tile.type == "Town SE tile 128x128.png")
+		currentTile = tile;
+		trace(lastTile.type);
+		trace(currentTile.type);
+		if (lastTile.type != "Town NW tile 128x128.png" && lastTile.type != "Town NE tile 128x128.png" && lastTile.type != "Town SW tile 128x128.png" && lastTile.type != "Town SE tile 128x128.png")
 		{
-			this.x = tile.x;
-			this.y = tile.y;
-			player.x = this.x + (64 - (player.width / 2));
-			player.y = this.y + (64 - (player.height / 2));
-			//refocus camera
-			PlayState.instance.cameraFocus.x = this.x;
-			PlayState.instance.cameraFocus.y = this.y;
+			if (actionPoints > 0)
+			{
+				this.x = tile.x;
+				this.y = tile.y;
 			
-			currentTile = tile;
+				player.x = this.x + (64 - (player.width / 2));
+				player.y = this.y + (64 - (player.height / 2));
+				//refocus camera
+				PlayState.instance.cameraFocus.x = this.x;
+				PlayState.instance.cameraFocus.y = this.y;
+				actionPoints -= 1;
+				playerMoved = true;
+			}
 		}
+		else if (lastTile.type == "Town NW tile 128x128.png" || lastTile.type == "Town NE tile 128x128.png" || lastTile.type == "Town SW tile 128x128.png" || lastTile.type == "Town SE tile 128x128.png")
+		{
+			if (currentTile.type == "Town NW tile 128x128.png" || currentTile.type == "Town NE tile 128x128.png" || currentTile.type == "Town SW tile 128x128.png" || currentTile.type == "Town SE tile 128x128.png")
+			{
+				this.x = tile.x;
+				this.y = tile.y;
+			
+				player.x = this.x + (64 - (player.width / 2));
+				player.y = this.y + (64 - (player.height / 2));
+				//refocus camera
+				PlayState.instance.cameraFocus.x = this.x;
+				PlayState.instance.cameraFocus.y = this.y;
+				playerMoved = true;
+			}
+			//leaving town
+			else if (currentTile.type != "Town NW tile 128x128.png" && currentTile.type != "Town NE tile 128x128.png" && currentTile.type != "Town SW tile 128x128.png" && currentTile.type != "Town SE tile 128x128.png")
+			{
+				this.x = tile.x;
+				this.y = tile.y;
+			
+				player.x = this.x + (64 - (player.width / 2));
+				player.y = this.y + (64 - (player.height / 2));
+				//refocus camera
+				PlayState.instance.cameraFocus.x = this.x;
+				PlayState.instance.cameraFocus.y = this.y;
+				actionPoints -= 1;
+				playerMoved = true;
+			}
+		}			
+			
 		if (currentTile == PlayState.instance.map.tiles[945]) //checks if player is in the bank
 		{
 			trace("in bank");
@@ -61,9 +104,10 @@ class Player extends FlxSprite
 		} else if (currentTile != PlayState.instance.map.tiles[945])
 		{
 			Bank.instance.hide();
-			actionPoints -= actionPoints > 0? 1: -0;
 		}
 		
+		lastTile = currentTile;
+		trace("current AP: " + actionPoints);
 		//update camera position
 		
 	}
@@ -75,6 +119,7 @@ class Player extends FlxSprite
 	{
 		actionPoints += amount;
 		actionPoints -= actionPoints % 6;
+		
 	}
 	public function addResource(ID:Int):Void
 	{
