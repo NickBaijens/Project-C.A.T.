@@ -42,15 +42,18 @@ class Player extends FlxSprite
 	
 	public function moveTo(tile: Tile)
 	{
-		this.x = tile.x;
-		this.y = tile.y;
-		player.x = this.x + (64 - (player.width / 2));
-		player.y = this.y + (64 - (player.height / 2));
-		//refocus camera
-		PlayState.instance.cameraFocus.x = this.x;
-		PlayState.instance.cameraFocus.y = this.y;
-		
-		currentTile = tile;
+		if (actionPoints > 0 || tile.type == "Town NW tile 128x128.png"|| tile.type == "Town NE tile 128x128.png"|| tile.type == "Town SW tile 128x128.png"|| tile.type == "Town SE tile 128x128.png")
+		{
+			this.x = tile.x;
+			this.y = tile.y;
+			player.x = this.x + (64 - (player.width / 2));
+			player.y = this.y + (64 - (player.height / 2));
+			//refocus camera
+			PlayState.instance.cameraFocus.x = this.x;
+			PlayState.instance.cameraFocus.y = this.y;
+			
+			currentTile = tile;
+		}
 		if (currentTile == PlayState.instance.map.tiles[945]) //checks if player is in the bank
 		{
 			trace("in bank");
@@ -58,6 +61,7 @@ class Player extends FlxSprite
 		} else if (currentTile != PlayState.instance.map.tiles[945])
 		{
 			Bank.instance.hide();
+			actionPoints -= actionPoints > 0? 1: -0;
 		}
 		
 		//update camera position

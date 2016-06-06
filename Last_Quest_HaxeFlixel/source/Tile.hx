@@ -12,7 +12,7 @@ class Tile extends FlxSprite
 	static var types = ["Grassland tile 128x128.png", "Sea tile 128x128.png", "Dessertland tile 128x128.png", "Rockland tile 128x128.png", "Town NW tile 128x128.png", "Town NE tile 128x128.png", "Town SE tile 128x128.png", "Town SW tile 128x128.png","WaterCalm tile 128x128.png","Undiscovered tile 128x128.png","TownGrassland tile 128x128.png"];
 	public var tileInv : Array <Int> = new Array();
 	var discovered : Bool = false;
-	var type: String = types[1];
+	public var type: String = types[1];
 	public var instanceID: Int = 0;
 	
 	public function new(tiletype:Int) 
@@ -31,10 +31,9 @@ class Tile extends FlxSprite
 	{
 		var player  = PlayState.instance.player;
 		
-		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png" && player.actionPoints>0)
+		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png")
 		{
 			player.moveTo(this);
-			player.actionPoints -= 1;
 			
 			//trace(this.discovered);
 			
