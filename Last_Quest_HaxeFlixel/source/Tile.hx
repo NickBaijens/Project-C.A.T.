@@ -31,7 +31,7 @@ class Tile extends FlxSprite
 	{
 		var player  = PlayState.instance.player;
 		
-		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png")
+		if (FlxMath.distanceBetween(player,this)==128 && this.type != "Sea tile 128x128.png" && this.type != "WaterCalm tile 128x128.png" && player.actionPoints>0)
 		{
 			player.moveTo(this);
 			if (this.type != "Town NW tile 128x128.png" && this.type != "Town NE tile 128x128.png" && this.type != "Town SE tile 128x128.png"  && this.type != "Town SW tile 128x128.png")
