@@ -51,11 +51,11 @@ class Player extends FlxSprite
 		PlayState.instance.cameraFocus.y = this.y;
 		
 		currentTile = tile;
-		if (currentTile == PlayState.instance.map.tiles[189]) //checks if player is in the bank
+		if (currentTile == PlayState.instance.map.tiles[945]) //checks if player is in the bank
 		{
 			trace("in bank");
 			Bank.instance.show();
-		} else if (currentTile != PlayState.instance.map.tiles[189])
+		} else if (currentTile != PlayState.instance.map.tiles[945])
 		{
 			Bank.instance.hide();
 		}

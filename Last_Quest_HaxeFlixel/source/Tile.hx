@@ -52,10 +52,10 @@ class Tile extends FlxSprite
 			PlayState.instance.map.tiles[this.instanceID + 1].updateTile();
 			PlayState.instance.map.tiles[this.instanceID - 1].discovered = true;
 			PlayState.instance.map.tiles[this.instanceID - 1].updateTile();
-			PlayState.instance.map.tiles[this.instanceID + 20].discovered = true;
-			PlayState.instance.map.tiles[this.instanceID + 20].updateTile();
-			PlayState.instance.map.tiles[this.instanceID - 20].discovered = true;
-			PlayState.instance.map.tiles[this.instanceID - 20].updateTile();
+			PlayState.instance.map.tiles[this.instanceID + 44].discovered = true;
+			PlayState.instance.map.tiles[this.instanceID + 44].updateTile();
+			PlayState.instance.map.tiles[this.instanceID - 44].discovered = true;
+			PlayState.instance.map.tiles[this.instanceID - 44].updateTile();
 			updateTile();
 		}
 		
