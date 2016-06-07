@@ -46,6 +46,8 @@ class PlayState extends FlxState
 		resource = new Resource();		
 		add(new FlxButton(5, 40, "Menu", showMenu));
 		
+		player.updatePlayerInv();
+		
 	}
 	
 	function showMenu():Void
@@ -57,5 +59,6 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		bank.updateBank();
+		
 	}
 }

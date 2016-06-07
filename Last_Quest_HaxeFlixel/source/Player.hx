@@ -12,17 +12,19 @@ class Player extends FlxSprite
 	public var currentTile: Tile;
 	public var lastTile : Tile;
 	public var playerMoved : Bool = false;
-	public var inventory : Array <Resource> = new Array();
+	public var playerInv : Array <Int> = new Array();
 	public var actionPoints:Int = 0;
 	var apBttnTest: FlxButton;
 	
 	var player = new FlxSprite();
 	
+	var uiBG = new FlxSprite();
+	
 	
 	public function new(pos: Tile) 
 	{
 		instance = this;
-		
+		playerInv = [];
 		super();
 		player.loadGraphic("assets/images/characters/CharacterMockup.png");
 		makeGraphic(128, 128, FlxColor.TRANSPARENT);
@@ -123,6 +125,62 @@ class Player extends FlxSprite
 	}
 	public function addResource(ID:Int):Void
 	{
-		Bank.instance.addResource(ID);
+		//Bank.instance.addResource(ID);
 	}
+	public function updatePlayerInv()
+    {
+		PlayState.instance.remove(uiBG);
+		uiBG.loadGraphic("assets/images/UI/inventory3x3.png");
+		uiBG.x = PlayState.instance.cameraFocus.x + -600;
+		uiBG.y = PlayState.instance.cameraFocus.y + -260;
+		PlayState.instance.add(uiBG);
+		
+		for ( i in 0...playerInv.length)
+		{
+			trace (i);
+			var resourceImage = new FlxSprite();
+			var resourceType : String = null;
+			var xOffset : Int;
+			var yOffset : Int;
+			switch playerInv[i]
+			{	
+				case 0:resourceType = "assets/images/resources/water.png";
+				case 1:resourceType = "assets/images/resources/food.png";
+				case 2:resourceType = "assets/images/resources/stone.png";
+				case 3:resourceType = "assets/images/resources/wood.png";
+				case 4:resourceType = "assets/images/resources/iron.png";
+				case 5:resourceType = "assets/images/resources/clay.png";
+			}
+			
+			if (i <= 2)
+			{
+				xOffset = -590;
+				yOffset = -250;
+				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + ( i * 40 );
+				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
+				resourceImage.loadGraphic(resourceType);
+				PlayState.instance.add(resourceImage);
+			}
+			if (i <= 5 && i > 2)
+			{
+				xOffset = -590;
+				yOffset = -210;
+				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + ( (i - 3) * 40 );
+				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
+				resourceImage.loadGraphic(resourceType);
+				PlayState.instance.add(resourceImage);
+			}
+			if (i <= 8 && i >5)
+			{
+				xOffset = -590;
+				yOffset = -170;
+				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + (( i - 6) * 40 );
+				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
+				resourceImage.loadGraphic(resourceType);
+				PlayState.instance.add(resourceImage);
+			}
+			
+			
+		}
+    }
 }
