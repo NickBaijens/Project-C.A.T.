@@ -1,10 +1,10 @@
 package;
-
+import flixel.ui.FlxButton;
 /**
  * ...
  * @author Dave
  */
-class Exit extends Button
+class Exit extends FlxButton
 {
 
 	public function new() 

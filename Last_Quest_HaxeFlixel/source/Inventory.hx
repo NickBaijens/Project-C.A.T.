@@ -26,8 +26,12 @@ class Inventory extends FlxSprite
 				inventoryBttns.push(invbttn);
 			}
 		}
-		
-		for ( i in 0...Player.instance.playerInv.length)
+		buttonPressed();
+	}
+	
+	function buttonPressed():Void
+	{
+			for ( i in 0...Player.instance.playerInv.length)
 		{
 			trace (i);
 			var resourceImage = new FlxSprite();
@@ -70,12 +74,7 @@ class Inventory extends FlxSprite
 				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
 				resourceImage.loadGraphic(resourceType);
 				PlayState.instance.add(resourceImage);
-			}	
+			}
 		}
-	}
-	
-	function buttonPressed():Void
-	{
-		
 	}
 }
