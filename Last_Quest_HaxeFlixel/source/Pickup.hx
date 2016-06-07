@@ -1,17 +1,17 @@
 package;
-
+import flixel.ui.FlxButton;
 /**
  * ...
  * @author Dave
  */
-class Pickup extends Button
+class Pickup extends FlxButton
 {
 
 	public function new() 
 	{
 		super();
 	}
-	override public function buttonPressed()
+	function buttonPressed()
 	{
 		
 	}

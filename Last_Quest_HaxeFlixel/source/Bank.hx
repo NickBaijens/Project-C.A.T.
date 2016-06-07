@@ -21,18 +21,18 @@ class Bank
 	public var wood : Int = 0;//3
 	public var iron : Int = 0;//4
 	public var clay : Int = 0;//5
-	var uiBG = new FlxSprite();
-	var image0 = new FlxSprite();
+	var uiBG = new FlxSprite(390,210,"assets/images/UI/test.png");
+	var image0 = new FlxSprite(0,0,"assets/images/resources/water.png");
 	var text0 = new FlxText(545, 200, "", 15);
-	var image1 = new FlxSprite();
+	var image1 = new FlxSprite(0, 0,"assets/images/resources/food.png");
 	var text1 = new FlxText(545, 240, "", 15);
-	var image2 = new FlxSprite();
+	var image2 = new FlxSprite(0,0,"assets/images/resources/stone.png");
 	var text2 = new FlxText(545, 280, "", 15);
-	var image3 = new FlxSprite();
+	var image3 = new FlxSprite(0,0,"assets/images/resources/wood.png");
 	var text3 = new FlxText(545, 320, "", 15);
-	var image4 = new FlxSprite();
+	var image4 = new FlxSprite(0,0,"assets/images/resources/iron.png");
 	var text4 = new FlxText(545, 360, "", 15);
-	var image5 = new FlxSprite();
+	var image5 = new FlxSprite(0,0,"assets/images/resources/clay.png");
 	var text5 = new FlxText(545, 400, "", 15);
 	public function new() 
 	{
@@ -42,27 +42,8 @@ class Bank
 		trace(bankInv);
 		bankInv.sort(function(a,b) return a-b);
 		trace(bankInv);
-		uiBG.loadGraphic("assets/images/UI/test.png");
-		PlayState.instance.add(uiBG);
-		image0.loadGraphic("assets/images/resources/water.png");
-		PlayState.instance.add(image0);
-		PlayState.instance.add(text0);
-		image1.loadGraphic("assets/images/resources/food.png");
-		PlayState.instance.add(image1);
-		PlayState.instance.add(text1);
-		image2.loadGraphic("assets/images/resources/stone.png");
-		PlayState.instance.add(image2);
-		PlayState.instance.add(text2);
-		image3.loadGraphic("assets/images/resources/wood.png");
-		PlayState.instance.add(image3);
-		PlayState.instance.add(text3);
-		image4.loadGraphic("assets/images/resources/iron.png");
-		PlayState.instance.add(image4);
-		PlayState.instance.add(text4);
-		image5.loadGraphic("assets/images/resources/clay.png");
-		PlayState.instance.add(image5);
-		PlayState.instance.add(text5);
-		
+		show();
+		hide();
 		//
 		//test buttons
 		//PlayState.instance.add(new FlxButton(5, 80, "Add Water", addResource.bind(0)));
@@ -72,8 +53,6 @@ class Bank
 		//PlayState.instance.add(new FlxButton(5, 160, "Add Iron", addResource.bind(4)));
 		//PlayState.instance.add(new FlxButton(5, 180, "Add Clay", addResource.bind(5)));
 		//
-		
-		hide();
 	}
 	public function hide()
 	{

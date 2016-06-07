@@ -46,6 +46,7 @@ class Player extends FlxSprite
 		updatePlayerActions(6);
 		apBttnTest = new FlxButton(10, 10, "add 6 ap", updatePlayerActions.bind(6));
 		PlayState.instance.add(apBttnTest);
+		PlayState.instance.add(new FlxButton(5, 80, "Add Water", addResource.bind(0)));
 	}
 	
 	public function moveTo(tile: Tile)
@@ -125,6 +126,6 @@ class Player extends FlxSprite
 	}
 	public function addResource(ID:Int):Void
 	{
-		//Bank.instance.addResource(ID);
+		playerInv.push(ID);
 	}
 }
