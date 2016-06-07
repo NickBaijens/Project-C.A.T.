@@ -13,7 +13,7 @@ import flixel.input.mouse.FlxMouseEventManager;
 
 class PlayState extends FlxState
 {
-	public var day:Int = 1;
+	public var day: Int = 1;
 	public static var instance : PlayState;
 	
 	private var cameraFollow:FlxCamera;
@@ -48,9 +48,6 @@ class PlayState extends FlxState
 		time = new Time();
 		resource = new Resource();		
 		add(new FlxButton(10, 60, "Menu", showMenu));
-		
-		player.updatePlayerInv();
-		
 	}
 	
 	function showMenu():Void
