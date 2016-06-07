@@ -13,6 +13,7 @@ import flixel.input.mouse.FlxMouseEventManager;
 
 class PlayState extends FlxState
 {
+	public var day:Int = 1;
 	public static var instance : PlayState;
 	
 	private var cameraFollow:FlxCamera;
@@ -23,6 +24,7 @@ class PlayState extends FlxState
 	var time : Time;
 	var resource : Resource; // creates initial instance of Resource Class
 	public var player : Player;
+	public var playerMenu : PlayerMenu;
 	
 	override public function create():Void
 	{
@@ -40,11 +42,12 @@ class PlayState extends FlxState
 		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();
 		bank = new Bank();
-		player = new Player(map.tiles[946]); //is there a better way for the initial spawn of the player?
-		//later we will get the tile from the database (I guess) but finding the town tiles is a bit tedious.
+		player = new Player(map.tiles[946]);
+		
+		playerMenu = new PlayerMenu();
 		time = new Time();
 		resource = new Resource();		
-		add(new FlxButton(5, 40, "Menu", showMenu));
+		add(new FlxButton(10, 60, "Menu", showMenu));
 		
 		player.updatePlayerInv();
 		
@@ -60,5 +63,16 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		bank.updateBank();
 		
+		
+	}
+	
+	public function endDay():Void
+	{
+		//todo check if defences held...
+		
+		
+		day += 1;
+		player.updatePlayerActions(6);
+		trace("Day: " + day);
 	}
 }
