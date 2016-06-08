@@ -22,7 +22,6 @@ class Tile extends FlxSprite
 		type = types[tiletype];
 		updateTile(); //sets correct image for (un)discovered tiles
 		
-		tileInv.push(0); // test adding water to inventory
 		FlxMouseEventManager.add(this, onDown, null, null, null);
 		
 	}
@@ -48,6 +47,8 @@ class Tile extends FlxSprite
 				PlayState.instance.map.tiles[this.instanceID - 44].discovered = true;
 				PlayState.instance.map.tiles[this.instanceID - 44].updateTile();
 				updateTile();
+				genRandomResource();
+				PlayerMenu.instance.updatePlayerMenu(); //update display of end day button
 				player.playerMoved = false;
 			}
 			

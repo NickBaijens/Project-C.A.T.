@@ -18,7 +18,7 @@ class Resource extends FlxSprite
 	{
 		instance = this;
 		super();
-		resourceGenID = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6 ,6 ,6 ,6 ,6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]; //array of resources, those that are in here more often have a higher chance of being selected
+		resourceGenID = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,]; //array of resources, those that are in here more often have a higher chance of being selected
 		//ID 0 = water, 1 = food, 2 = stone, 3 = wood, 4 = iron, 5 = clay, 6 = nothing
 	}
 	
