@@ -80,7 +80,8 @@ class Tile extends FlxSprite
 		{
 			loadGraphic("assets/images/tiles/Undiscovered tile 128x128.png");
 		}
-		PlayState.instance.add(this);	
+		PlayState.instance.add(this);
+		
 	}
 	
 	public function genRandomResource()
@@ -92,13 +93,10 @@ class Tile extends FlxSprite
 			{
 				tileInv.push(Resource.instance.generatedResource);
 				trace("tile inventory " + tileInv);
-			}
-			if (tileInv[0] != null)
-			{
-				var resource = new FlxSprite(x, y, "assets/images/resources/" + tileInv[0] + ".png");
-				PlayState.instance.add(resource);
+				Player.instance.showTileInv();
 			}
 			Resource.instance.generatedResource = null;
+			
 		}
 	}
 	
