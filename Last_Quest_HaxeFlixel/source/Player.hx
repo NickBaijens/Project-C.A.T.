@@ -131,7 +131,7 @@ class Player extends FlxSprite
 			tileInvUI[k].kill();
 		}
 		trace(currentTile.type);
-		if (currentTile.type != "Town NE tile 128x128.png" || currentTile.type != "Town SW tile 128x128.png" || currentTile.type != "Town SE tile 128x128.png")
+		if (currentTile.type != "Town NE tile 128x128.png" && currentTile.type != "Town SW tile 128x128.png" && currentTile.type != "Town SE tile 128x128.png")
 		{
 			trace(currentTile.type);
 			//create background
