@@ -22,23 +22,24 @@ class Bank
 	public var iron : Int = 0;//4
 	public var clay : Int = 0;//5
 	var uiBG = new FlxSprite(390,210,"assets/images/UI/test.png");
-	var image0 = new FlxSprite(0,0,"assets/images/resources/water.png");
+	var image0 = new FlxSprite(0,0,"assets/images/resources/0.png");
 	var text0 = new FlxText(545, 200, "", 15);
-	var image1 = new FlxSprite(0, 0,"assets/images/resources/food.png");
+	var image1 = new FlxSprite(0, 0,"assets/images/resources/1.png");
 	var text1 = new FlxText(545, 240, "", 15);
-	var image2 = new FlxSprite(0,0,"assets/images/resources/stone.png");
+	var image2 = new FlxSprite(0,0,"assets/images/resources/2.png");
 	var text2 = new FlxText(545, 280, "", 15);
-	var image3 = new FlxSprite(0,0,"assets/images/resources/wood.png");
+	var image3 = new FlxSprite(0,0,"assets/images/resources/3.png");
 	var text3 = new FlxText(545, 320, "", 15);
-	var image4 = new FlxSprite(0,0,"assets/images/resources/iron.png");
+	var image4 = new FlxSprite(0,0,"assets/images/resources/4.png");
 	var text4 = new FlxText(545, 360, "", 15);
-	var image5 = new FlxSprite(0,0,"assets/images/resources/clay.png");
+	var image5 = new FlxSprite(0,0,"assets/images/resources/5.png");
 	var text5 = new FlxText(545, 400, "", 15);
+	
 	public function new() 
 	{
 		instance = this;
 		
-		bankInv = [0,0,1,1];
+		bankInv = [0,0,1,1,4,3,5];
 		trace(bankInv);
 		bankInv.sort(function(a,b) return a-b);
 		trace(bankInv);
@@ -54,6 +55,7 @@ class Bank
 		//PlayState.instance.add(new FlxButton(5, 180, "Add Clay", addResource.bind(5)));
 		//
 	}
+	
 	public function hide()
 	{
 		PlayState.instance.remove(uiBG);
@@ -68,9 +70,9 @@ class Bank
 		PlayState.instance.remove(image4);
 		PlayState.instance.remove(text4);
 		PlayState.instance.remove(image5);
-		PlayState.instance.remove(text5);
-	
+		PlayState.instance.remove(text5);	
 	}
+	
 	public function show()
 	{
 		uiBG.x = PlayState.instance.cameraFocus.x + 390;
@@ -112,7 +114,6 @@ class Bank
 		text5.x = image5.x + 45;
 		text5.y = image5.y;
 		PlayState.instance.add(text5);
-
 	}
 	
 	public function updateBank()
@@ -146,6 +147,7 @@ class Bank
 		text5.text = "x" + clay;
 		
     }
+	
 	public function addResource(ID:Int):Void
 	{
 		bankInv.push(ID);

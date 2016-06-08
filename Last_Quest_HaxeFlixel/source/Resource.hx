@@ -2,7 +2,6 @@ package;
 import flixel.FlxSprite;
 import flixel.FlxG;
 
-
 /**
  * ...
  * @author Dave
@@ -14,8 +13,7 @@ class Resource extends FlxSprite
 	public var resourceID : Int;
 	public var generatedResource : Int;
 	var resourceGenID : Array <Int>;
-	
-	
+		
 	public function new() 
 	{
 		instance = this;
@@ -23,6 +21,7 @@ class Resource extends FlxSprite
 		resourceGenID = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6 ,6 ,6 ,6 ,6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]; //array of resources, those that are in here more often have a higher chance of being selected
 		//ID 0 = water, 1 = food, 2 = stone, 3 = wood, 4 = iron, 5 = clay, 6 = nothing
 	}
+	
 	public function generateRandomResource() //picks ("generates") a 'random' resource using an array and number generator
 	{
 		var genResourceID : Int = (Math.floor(Math.random() * resourceGenID.length)); //generates random number
