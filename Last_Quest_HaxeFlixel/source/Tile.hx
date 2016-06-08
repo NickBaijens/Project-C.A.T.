@@ -14,7 +14,7 @@ class Tile extends FlxSprite
 	public var tileInv : Array <Int> = new Array();
 	
 	
-	
+	public var maxHarvestNum : Int; //maximum amount of times a tile can be harvested
 	var discovered : Bool = false;
 	public var type: String = types[1];
 	public var instanceID: Int = 0;
@@ -28,6 +28,8 @@ class Tile extends FlxSprite
 		updateTile(); //sets correct image for (un)discovered tiles
 		
 		FlxMouseEventManager.add(this, onDown, null, null, null);
+		
+		maxHarvestNum = Math.ceil(Math.random() * 5);
 		
 	}
 	
@@ -135,25 +137,32 @@ class Tile extends FlxSprite
 		{
 			PlayerMenu.instance.harvestButton.text = "Harvest";
 		}
+		if (Player.instance.currentTile.maxHarvestNum <= 0)
+		{
+			PlayerMenu.instance.harvestButton.text = "Can't harvest";
+		}
 	}
 	public function addResource():Void
 	{
-		if (Player.instance.actionPoints >= 1)
+		if (Player.instance.actionPoints >= 1 && Player.instance.currentTile.maxHarvestNum >= 1)
 		{
 			if (Player.instance.currentTile.type == "TownGrassland tile 128x128.png")
 			{
 				Player.instance.currentTile.tileInv.push(3);
 				Player.instance.actionPoints -= 1;
+				Player.instance.currentTile.maxHarvestNum -= 1;
 			}
 			else if (Player.instance.currentTile.type == "Grassland tile 128x128.png")
 			{
 				Player.instance.currentTile.tileInv.push(3);
 				Player.instance.actionPoints -= 1;
+				Player.instance.currentTile.maxHarvestNum -= 1;
 			}
 			else if (Player.instance.currentTile.type == "Rockland tile 128x128.png")
 			{
 				Player.instance.currentTile.tileInv.push(2);
 				Player.instance.actionPoints -= 1;
+				Player.instance.currentTile.maxHarvestNum -= 1;
 			}
 		}
 	}
