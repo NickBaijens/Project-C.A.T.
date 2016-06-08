@@ -143,14 +143,12 @@ class Player extends FlxSprite
 		tileInvUI.push(invBG);*/
 		
 		//create inventory items according to tileInv, positioned in a list
-		//currentTile.tileInv.sort(function(a, b) return a - b);
-
 		for (type in 0...6)
 		{
-			var invIcon = new FlxButton(720, 250 + (type * 42), "");
+			var invIcon = new FlxButton(920, 250 + (type * 42), "",Inventory.instance.takeResource.bind(type));
 			invIcon.loadGraphic("assets/images/resources/" + type + ".png",false,42,42);
 			PlayState.instance.add(invIcon);
-			var resourceAmount = new FlxButton(760, 250 + (type * 42), "");
+			var resourceAmount = new FlxButton(960, 250 + (type * 42), "");
 			
 			var currentResourceAmount: Int = 0;
 			for (resource in currentTile.tileInv)

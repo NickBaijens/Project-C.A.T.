@@ -167,6 +167,7 @@ class Tile extends FlxSprite
 				Player.instance.actionPoints -= 1;
 				Player.instance.currentTile.maxHarvestNum -= 1;
 			}
+			Player.instance.showTileInv();
 		}
 	}
 }
