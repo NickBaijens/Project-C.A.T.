@@ -45,7 +45,7 @@ class PlayState extends FlxState
 		playerMenu = new PlayerMenu();
 		time = new Time();
 		resource = new Resource();		
-		add(new FlxButton(10, 60, "Menu", showMenu));
+		add(new FlxButton(10, 85, "Menu", showMenu));
 	}
 	
 	function showMenu():Void
@@ -57,6 +57,7 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		bank.updateBank();
+		Player.instance.currentTile.harvestResourceBttnTextUpdate();
 		
 		
 	}
