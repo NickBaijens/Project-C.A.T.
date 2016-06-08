@@ -97,24 +97,21 @@ class Tile extends FlxSprite
 	
 	public function harvestResourceBttnUpdate()
 	{
-		trace("updating harvest button");
-		trace("currentTile:" + Player.instance.currentTile.type);
-		trace("button visable? " + PlayerMenu.instance.harvestButtonVisable);
+		//trace("updating harvest button");
+		//trace("currentTile:" + Player.instance.currentTile.type);
+		//trace("button visable? " + PlayerMenu.instance.harvestButtonVisable);
 		if (Player.instance.currentTile.type == "Rockland tile 128x128.png" && Player.instance.playerMoved == true && PlayerMenu.instance.harvestButtonVisable == false )
 		{
-			trace(1);
 			PlayState.instance.add(PlayerMenu.instance.harvestButton);
 			PlayerMenu.instance.harvestButtonVisable = true;
 		}
 		else if (Player.instance.currentTile.type == "Grassland tile 128x128.png" && Player.instance.playerMoved == true && PlayerMenu.instance.harvestButtonVisable == false )
 		{
-			trace(2);
 			PlayState.instance.add(PlayerMenu.instance.harvestButton);
 			PlayerMenu.instance.harvestButtonVisable = true;
 		}
 		else if (Player.instance.currentTile.type == "TownGrassland tile 128x128.png" && Player.instance.playerMoved == true && PlayerMenu.instance.harvestButtonVisable == false )
 		{
-			trace(3);
 			PlayState.instance.add(PlayerMenu.instance.harvestButton);
 			PlayerMenu.instance.harvestButtonVisable = true;
 		}
@@ -122,7 +119,6 @@ class Tile extends FlxSprite
 		{
 			if (Player.instance.currentTile.type != "TownGrassland tile 128x128.png" && Player.instance.currentTile.type != "Rockland tile 128x128.png" && Player.instance.currentTile.type != "Grassland tile 128x128.png")
 			{
-				trace("removed button");
 				PlayState.instance.remove(PlayerMenu.instance.harvestButton);
 				PlayerMenu.instance.harvestButtonVisable = false;
 			}

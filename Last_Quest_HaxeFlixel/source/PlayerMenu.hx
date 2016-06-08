@@ -37,11 +37,11 @@ class PlayerMenu
 		{
 			
 			PlayState.instance.add(endDayButton);
-			trace("player in barracks");
+			//trace("player in barracks");
 		}
 		else if (Player.instance.currentTile != PlayState.instance.map.tiles[946])
 		{
-			trace("player not in barracks");
+			//trace("player not in barracks");
 			PlayState.instance.remove(endDayButton);
 			
 		}

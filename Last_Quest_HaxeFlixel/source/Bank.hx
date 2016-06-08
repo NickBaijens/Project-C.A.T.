@@ -40,9 +40,9 @@ class Bank
 		instance = this;
 		
 		bankInv = [0,0,1,1,4,3,5];
-		trace(bankInv);
+		//trace(bankInv);
 		bankInv.sort(function(a,b) return a-b);
-		trace(bankInv);
+		//trace(bankInv);
 		show();
 		hide();
 		//

@@ -33,8 +33,8 @@ class Player extends FlxSprite
 		player.y = this.y + (64 - (player.height / 2));
 		lastTile = pos;
 		currentTile = pos;
-		trace("lastTile.type = " + lastTile.type);
-		trace("currentTile.type = " + currentTile.type);
+		//trace("lastTile.type = " + lastTile.type);
+		//trace("currentTile.type = " + currentTile.type);
 		PlayState.instance.add(this);
 		PlayState.instance.add(player);
 		
@@ -52,8 +52,8 @@ class Player extends FlxSprite
 	public function moveTo(tile: Tile)
 	{
 		currentTile = tile;
-		trace(lastTile.type);
-		trace(currentTile.type);
+		//trace(lastTile.type);
+		//trace(currentTile.type);
 		if (lastTile.type != "Town NW tile 128x128.png" && lastTile.type != "Town NE tile 128x128.png" && lastTile.type != "Town SW tile 128x128.png" && lastTile.type != "Town SE tile 128x128.png")
 		{
 			if (actionPoints > 0)
@@ -102,7 +102,7 @@ class Player extends FlxSprite
 			
 		if (currentTile == PlayState.instance.map.tiles[945]) //checks if player is in the bank
 		{
-			trace("in bank");
+			//trace("in bank");
 			Bank.instance.show();
 		} else if (currentTile != PlayState.instance.map.tiles[945])
 		{
