@@ -61,7 +61,7 @@ class Inventory extends FlxSprite
 			Player.instance.currentTile.tileInv.remove(ID);
 			playerInv.push(ID);
 			updateInventory();
-			Player.instance.showTileInv();
+			Player.instance.updateTileInv();
 		}
 	}
 	
@@ -73,6 +73,6 @@ class Inventory extends FlxSprite
 		Player.instance.currentTile.tileInv.push(ID);
 		updateInventory();
 		trace(Player.instance.currentTile.tileInv);
-		Player.instance.showTileInv();
+		Player.instance.updateTileInv();
 	}
 }

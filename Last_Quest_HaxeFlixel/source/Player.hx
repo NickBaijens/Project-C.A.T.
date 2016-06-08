@@ -89,30 +89,25 @@ class Player extends FlxSprite
 			//leaving town
 			else if (currentTile.type != "Town NW tile 128x128.png" && currentTile.type != "Town NE tile 128x128.png" && currentTile.type != "Town SW tile 128x128.png" && currentTile.type != "Town SE tile 128x128.png")
 			{
-				this.x = tile.x;
-				this.y = tile.y;
-			
-				player.x = this.x + (64 - (player.width / 2));
-				player.y = this.y + (64 - (player.height / 2));
-				//refocus camera
-				PlayState.instance.cameraFocus.x = this.x;
-				PlayState.instance.cameraFocus.y = this.y;
-				actionPoints -= 1;
-				playerMoved = true;
+				if (actionPoints > 0)
+				{
+					this.x = tile.x;
+					this.y = tile.y;
+				
+					player.x = this.x + (64 - (player.width / 2));
+					player.y = this.y + (64 - (player.height / 2));
+					//refocus camera
+					PlayState.instance.cameraFocus.x = this.x;
+					PlayState.instance.cameraFocus.y = this.y;
+					actionPoints -= 1;
+					playerMoved = true;
+				}
 			}
-		}			
-			
-		if (currentTile == PlayState.instance.map.tiles[945]) //checks if player is in the bank
-		{
-			//trace("in bank");
-			Bank.instance.show();
-		} else if (currentTile != PlayState.instance.map.tiles[945])
-		{
-			Bank.instance.hide();
 		}
 		
 		lastTile = currentTile;
 		//trace("current AP: " + actionPoints);
+		updateTileInv();
 		
 	}
 
@@ -128,45 +123,49 @@ class Player extends FlxSprite
 		Inventory.instance.updateInventory();
 	}
 	
-	public function showTileInv()
+	public function updateTileInv()
 	{
 		//clear inventory UI
 		for (k in 0...tileInvUI.length)
 		{
 			tileInvUI[k].kill();
 		}
-		
-		//create background
-		/*var invBG = new FlxButton(10, 150, "");
-		invBG.loadGraphic("assets/images/UI/inventory3x3.png", false, 126, 126);
-		PlayState.instance.add(invBG);
-		tileInvUI.push(invBG);*/
-		
-		//create inventory items according to tileInv, positioned in a list
-		for (type in 0...6)
+		trace(currentTile.type);
+		if (currentTile.type != "Town NE tile 128x128.png" || currentTile.type != "Town SW tile 128x128.png" || currentTile.type != "Town SE tile 128x128.png")
 		{
-			var invIcon = new FlxButton(920, 250 + (type * 42), "",Inventory.instance.takeResource.bind(type));
-			invIcon.loadGraphic("assets/images/resources/" + type + ".png",false,42,42);
-			PlayState.instance.add(invIcon);
-			var resourceAmount = new FlxButton(960, 250 + (type * 42), "");
+			trace(currentTile.type);
+			//create background
+			var invBG = new FlxButton(920, 250, "");
+			invBG.loadGraphic("assets/images/UI/test.png", false, 126, 126);
+			PlayState.instance.add(invBG);
+			tileInvUI.push(invBG);
 			
-			var currentResourceAmount: Int = 0;
-			for (resource in currentTile.tileInv)
+			//create inventory items according to tileInv, positioned in a list
+			for (type in 0...6)
 			{
-				trace(currentTile.tileInv);
-				trace(resource);
-				trace(type);
-				if (resource == type)
+				var invIcon = new FlxButton(920, 250 + (type * 42), "",Inventory.instance.takeResource.bind(type));
+				invIcon.loadGraphic("assets/images/resources/" + type + ".png",false,42,42);
+				PlayState.instance.add(invIcon);
+				var resourceAmount = new FlxButton(960, 250 + (type * 42), "");
+				
+				var currentResourceAmount: Int = 0;
+				for (resource in currentTile.tileInv)
 				{
-					currentResourceAmount += 1;
+					trace(currentTile.tileInv);
+					trace(resource);
+					trace(type);
+					if (resource == type)
+					{
+						currentResourceAmount += 1;
+					}
 				}
+				resourceAmount.text = "x"+currentResourceAmount;
+				PlayState.instance.add(resourceAmount);
+				
+				
+				tileInvUI.push(invIcon);
+				tileInvUI.push(resourceAmount);
 			}
-			resourceAmount.text = "x"+currentResourceAmount;
-			PlayState.instance.add(resourceAmount);
-			
-			
-			tileInvUI.push(invIcon);
-			tileInvUI.push(resourceAmount);
 		}
 		
 	}
