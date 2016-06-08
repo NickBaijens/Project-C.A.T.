@@ -23,6 +23,7 @@ class PlayState extends FlxState
 	var resource : Resource; // creates initial instance of Resource Class
 	public var player : Player;
 	public var playerMenu : PlayerMenu;
+	public var upgrades : Upgrades;
 	
 	override public function create():Void
 	{
@@ -41,9 +42,11 @@ class PlayState extends FlxState
 		player = new Player(map.tiles[946]);
 		
 		playerMenu = new PlayerMenu();
+		upgrades = new Upgrades();
 		time = new Time();
 		resource = new Resource();		
 		add(new FlxButton(10, 85, "Menu", showMenu));
+		PlayState.instance.map.tiles[945].tileInv = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5];
 	}
 	
 	function showMenu():Void
@@ -56,15 +59,37 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		Player.instance.currentTile.harvestResourceBttnTextUpdate();
 		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;	
+		Upgrades.instance.updateDisplays();
+		getUpgradeRequirements();
 	}
 	
 	public function endDay():Void
 	{
 		//todo check if defences held...
-		
-		
-		day += 1;
-		player.updatePlayerActions(6);
-		trace("Day: " + day);
+		if (Upgrades.instance.attackValue > Upgrades.instance.defenceValue)
+		{
+			trace("game over... you survived until day " + day + "...");
+			showMenu();
+		}
+		else
+		{
+			day += 1;
+			Upgrades.instance.attackValue += Math.floor(10 + (10 * day));
+			player.updatePlayerActions(6);
+			trace("Day: " + day);
+			PlayerMenu.instance.eatButton.text = "Eat";
+			PlayerMenu.instance.drinkButton.text = "Drink";
+		}
+	}
+	
+	
+	public function getUpgradeRequirements() //quick and dirty way to generate requirements
+	{
+		Upgrades.instance.reqWater = Math.floor(0.2 * Upgrades.instance.currentlevel);
+		Upgrades.instance.reqFood = Math.floor(0.3 * Upgrades.instance.currentlevel);
+		Upgrades.instance.reqStone = Math.floor(0.5 * Upgrades.instance.currentlevel);
+		Upgrades.instance.reqWood = Math.floor(3 * Upgrades.instance.currentlevel);
+		Upgrades.instance.reqIron = Math.floor(0.1 * Upgrades.instance.currentlevel);
+		Upgrades.instance.reqClay = Math.floor(0.2 * Upgrades.instance.currentlevel);
 	}
 }

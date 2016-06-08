@@ -92,7 +92,7 @@ class Tile extends FlxSprite
 			if (Resource.instance.generatedResource == 0 || Resource.instance.generatedResource == 1 || Resource.instance.generatedResource == 2 || Resource.instance.generatedResource == 3 || Resource.instance.generatedResource == 4 || Resource.instance.generatedResource == 5)
 			{
 				tileInv.push(Resource.instance.generatedResource);
-				trace("tile inventory " + tileInv);
+				//trace("tile inventory " + tileInv);
 				Player.instance.updateTileInv();
 			}
 			Resource.instance.generatedResource = null;
