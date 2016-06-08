@@ -20,6 +20,9 @@ class PlayerMenu
 	public var harvestButton : FlxButton;
 	public var harvestButtonVisable : Bool = false;
 	
+	public var eatButton : FlxButton;
+	public var drinkButton : FlxButton;
+	public var currentAP : FlxButton;
 	static public var instance : PlayerMenu;
 	public function new() 
 	{
@@ -28,6 +31,13 @@ class PlayerMenu
 		PlayState.instance.add(endDayButton);
 		
 		harvestButton = new FlxButton(10, 60, "Harvest", Player.instance.currentTile.addResource);
+		
+		eatButton = new FlxButton(100, 35, "Eat", eat);
+		PlayState.instance.add(eatButton);
+		drinkButton = new FlxButton(100, 60, "Drink", drink);
+		PlayState.instance.add(drinkButton);
+		currentAP = new FlxButton(100, 10, "");
+		PlayState.instance.add(currentAP);
 		
 	}
 	public function updatePlayerMenu()
@@ -46,5 +56,20 @@ class PlayerMenu
 			
 		}
 	}
-
+	function eat():Void
+	{
+		if (eatButton.text == "Eat")
+		{
+			Player.instance.updatePlayerActions(6);
+			eatButton.text = "Can't eat";
+		}
+	}
+	function drink():Void
+	{
+		if (drinkButton.text == "Drink")
+		{
+			Player.instance.updatePlayerActions(6);
+			drinkButton.text = "Can't drink";
+		}
+	}
 }

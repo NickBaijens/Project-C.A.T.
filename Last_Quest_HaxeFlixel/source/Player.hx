@@ -110,8 +110,7 @@ class Player extends FlxSprite
 		}
 		
 		lastTile = currentTile;
-		trace("current AP: " + actionPoints);
-		//update camera position
+		//trace("current AP: " + actionPoints);
 		
 	}
 
