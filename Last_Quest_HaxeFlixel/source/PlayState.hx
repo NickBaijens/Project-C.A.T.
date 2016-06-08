@@ -10,7 +10,6 @@ import flixel.util.FlxColor;
 import flixel.math.FlxMath;
 import flixel.input.mouse.FlxMouseEventManager;
 
-
 class PlayState extends FlxState
 {
 	public var day: Int = 1;
@@ -29,6 +28,7 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		instance = this;
+		super.create();
 		
 		cameraFocus = new FlxSprite();
 		cameraFocus.makeGraphic(1, 1, FlxColor.TRANSPARENT);
@@ -36,8 +36,6 @@ class PlayState extends FlxState
 		
 		cameraFollow = FlxG.camera;
 		cameraFollow.follow(cameraFocus, FlxCameraFollowStyle.LOCKON);
-		
-		super.create();
 		
 		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();

@@ -54,6 +54,7 @@ class Tile extends FlxSprite
 		}
 		
 	}
+	
 	function updateTile()
 	{
 		PlayState.instance.remove(this);
@@ -70,6 +71,7 @@ class Tile extends FlxSprite
 		}
 		PlayState.instance.add(this);
 	}
+	
 	public function genRandomResource()
 	{
 		if (this.type != "Town NW tile 128x128.png" && this.type != "Town NE tile 128x128.png" && this.type != "Town SE tile 128x128.png"  && this.type != "Town SW tile 128x128.png")
@@ -83,6 +85,7 @@ class Tile extends FlxSprite
 				Resource.instance.generatedResource = null;
 			}
 	}
+	
 	public function harvestResource()
 	{
 		

@@ -12,19 +12,17 @@ class Player extends FlxSprite
 	public var currentTile: Tile;
 	public var lastTile : Tile;
 	public var playerMoved : Bool = false;
-	public var playerInv : Array <Int> = new Array();
+	
 	public var actionPoints:Int = 0;
 	var apBttnTest: FlxButton;
 	
 	var player = new FlxSprite();
 	
 	var uiBG = new FlxSprite();
-	
-	
+		
 	public function new(pos: Tile) 
 	{
 		instance = this;
-		playerInv = [];
 		super();
 		player.loadGraphic("assets/images/characters/CharacterMockup.png");
 		makeGraphic(128, 128, FlxColor.TRANSPARENT);
@@ -44,9 +42,11 @@ class Player extends FlxSprite
 		PlayState.instance.cameraFocus.x = this.x;
 		PlayState.instance.cameraFocus.y = this.y;
 		updatePlayerActions(6);
+		//Test buttons!
 		apBttnTest = new FlxButton(10, 10, "add 6 ap", updatePlayerActions.bind(6));
 		PlayState.instance.add(apBttnTest);
-		PlayState.instance.add(new FlxButton(5, 80, "Add Water", addResource.bind(0)));
+		PlayState.instance.add(new FlxButton(10, 85, "Add Water", Inventory.instance.takeResource.bind(0)));
+		PlayState.instance.add(new FlxButton(10, 110, "Add Food", Inventory.instance.takeResource.bind(1)));		
 	}
 	
 	public function moveTo(tile: Tile)
@@ -114,18 +114,17 @@ class Player extends FlxSprite
 		//update camera position
 		
 	}
-	public function getMapZone()
-	{
-		
-	}
+
 	public function updatePlayerActions(amount: Int):Void
 	{
 		actionPoints += amount;
 		actionPoints = actionPoints > 6?6:actionPoints;
 		
 	}
+	
 	public function addResource(ID:Int):Void
 	{
-		playerInv.push(ID);
+		Inventory.instance.takeResource(ID);
+		Inventory.instance.updateInventory();
 	}
 }

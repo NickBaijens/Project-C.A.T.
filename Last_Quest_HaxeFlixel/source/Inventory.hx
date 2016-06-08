@@ -7,74 +7,67 @@ import flixel.ui.FlxButton;
  */
 class Inventory extends FlxSprite
 {
+	static public var instance: Inventory;
 	
+	public var playerInv: Array <Int> = new Array();
 	var inventoryBttns: Array<FlxButton> = new Array<FlxButton>();
-	var slots: Array<Int> = new Array<Int>();
+
 	public function new() 
 	{
 		super();
+		instance = this;
+		updateInventory();
+	}
+	
+	public function updateInventory()
+	{
+		//clear inventory UI
+		for (k in 0...inventoryBttns.length)
+		{
+			inventoryBttns[k].kill();
+		}
 		
+		//create background
+		var invBG = new FlxButton(10, 150, "");
+		invBG.loadGraphic("assets/images/UI/inventory3x3.png", false, 126, 126);
+		PlayState.instance.add(invBG);
+		inventoryBttns.push(invBG);
+		
+		//create inventory items according to playerInv, positioned in a 3x3 grid
+		var i: Int = 0;
 		for (y in 0...3)
 		{
 			for (x in 0...3)
-			{
-				var invbttn = new FlxButton(x * 42, y * 42, "", buttonPressed);
-				invbttn.loadGraphic("assets/images/UI/inventorySpot.png", false, 42, 42);
-				invbttn.x += 50;
-				invbttn.y += 100;
-				PlayState.instance.add(invbttn);
-				inventoryBttns.push(invbttn);
+			{			
+				if (playerInv[i] != null)
+				{
+					var invItem = new FlxButton(x * 42, y * 42, "", dropResource.bind(i, playerInv[i]));
+					invItem.loadGraphic("assets/images/resources/" + playerInv[i] + ".png", false, 42,42);
+					invItem.x += 10;
+					invItem.y += 150;
+					PlayState.instance.add(invItem);
+					inventoryBttns.push(invItem);
+				}
+				i += 1;
 			}
 		}
-		buttonPressed();
 	}
 	
-	function buttonPressed():Void
+	//use this to take a resource from a tile and place it in the inventory
+	public function takeResource(ID: Int)
 	{
-			for ( i in 0...Player.instance.playerInv.length)
-		{
-			trace (i);
-			var resourceImage = new FlxSprite();
-			var resourceType : String = null;
-			var xOffset : Int;
-			var yOffset : Int;
-			switch Player.instance.playerInv[i]
-			{	
-				case 0:resourceType = "assets/images/resources/water.png";
-				case 1:resourceType = "assets/images/resources/food.png";
-				case 2:resourceType = "assets/images/resources/stone.png";
-				case 3:resourceType = "assets/images/resources/wood.png";
-				case 4:resourceType = "assets/images/resources/iron.png";
-				case 5:resourceType = "assets/images/resources/clay.png";
-			}
-			
-			if (i <= 2)
-			{
-				xOffset = -590;
-				yOffset = -250;
-				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + ( i * 40 );
-				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
-				resourceImage.loadGraphic(resourceType);
-				PlayState.instance.add(resourceImage);
-			}
-			if (i <= 5 && i > 2)
-			{
-				xOffset = -590;
-				yOffset = -210;
-				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + ( (i - 3) * 40 );
-				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
-				resourceImage.loadGraphic(resourceType);
-				PlayState.instance.add(resourceImage);
-			}
-			if (i <= 8 && i >5)
-			{
-				xOffset = -590;
-				yOffset = -170;
-				resourceImage.x = PlayState.instance.cameraFocus.x + xOffset + (( i - 6) * 40 );
-				resourceImage.y	= PlayState.instance.cameraFocus.y + yOffset;
-				resourceImage.loadGraphic(resourceType);
-				PlayState.instance.add(resourceImage);
-			}
-		}
+		//uncomment line below to add a resource manually for testing
+		//Player.instance.currentTile.tileInv.push(ID);
+		Player.instance.currentTile.tileInv.remove(ID);
+		playerInv.push(ID);
+		updateInventory();
+	}
+	
+	//use this to drop a resource on a tile
+	public function dropResource(index:Int,ID:Int):Void
+	{
+		playerInv.splice(index,1);
+		Player.instance.currentTile.tileInv.push(ID);
+		updateInventory();
 	}
 }
