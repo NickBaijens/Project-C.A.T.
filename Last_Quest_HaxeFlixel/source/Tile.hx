@@ -80,8 +80,7 @@ class Tile extends FlxSprite
 		{
 			loadGraphic("assets/images/tiles/Undiscovered tile 128x128.png");
 		}
-		PlayState.instance.add(this);
-		
+		PlayState.instance.add(this);	
 	}
 	
 	public function genRandomResource()
