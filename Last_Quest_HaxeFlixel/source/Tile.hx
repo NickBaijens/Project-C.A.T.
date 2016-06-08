@@ -93,7 +93,7 @@ class Tile extends FlxSprite
 			{
 				tileInv.push(Resource.instance.generatedResource);
 				trace("tile inventory " + tileInv);
-				Player.instance.showTileInv();
+				Player.instance.updateTileInv();
 			}
 			Resource.instance.generatedResource = null;
 			
@@ -167,7 +167,7 @@ class Tile extends FlxSprite
 				Player.instance.actionPoints -= 1;
 				Player.instance.currentTile.maxHarvestNum -= 1;
 			}
-			Player.instance.showTileInv();
+			Player.instance.updateTileInv();
 		}
 	}
 }

@@ -18,7 +18,6 @@ class PlayState extends FlxState
 	private var cameraFollow:FlxCamera;
 	public var cameraFocus:FlxSprite;
 	
-	public static var bank : Bank;
 	public var map : WorldMap;
 	var time : Time;
 	var resource : Resource; // creates initial instance of Resource Class
@@ -39,7 +38,6 @@ class PlayState extends FlxState
 		
 		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();
-		bank = new Bank();
 		player = new Player(map.tiles[946]);
 		
 		playerMenu = new PlayerMenu();
@@ -56,11 +54,8 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		bank.updateBank();
 		Player.instance.currentTile.harvestResourceBttnTextUpdate();
-		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;
-		
-		
+		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;	
 	}
 	
 	public function endDay():Void

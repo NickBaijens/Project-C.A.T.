@@ -56,12 +56,12 @@ class Inventory extends FlxSprite
 	//use this to take a resource from a tile and place it in the inventory
 	public function takeResource(ID: Int)
 	{
-		if (Player.instance.currentTile.tileInv.indexOf(ID) != -1 && playerInv.length<=9)
+		if (Player.instance.currentTile.tileInv.indexOf(ID) != -1 && playerInv.length<9)
 		{
 			Player.instance.currentTile.tileInv.remove(ID);
 			playerInv.push(ID);
 			updateInventory();
-			Player.instance.showTileInv();
+			Player.instance.updateTileInv();
 		}
 	}
 	
@@ -73,6 +73,6 @@ class Inventory extends FlxSprite
 		Player.instance.currentTile.tileInv.push(ID);
 		updateInventory();
 		trace(Player.instance.currentTile.tileInv);
-		Player.instance.showTileInv();
+		Player.instance.updateTileInv();
 	}
 }
