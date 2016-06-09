@@ -33,11 +33,11 @@ class PlayerMenu
 		harvestButton = new FlxButton(10, 60, "Harvest", Player.instance.currentTile.addResource);
 		
 		eatButton = new FlxButton(100, 35, "Eat", eat);
-		PlayState.instance.add(eatButton);
+		PlayState.instance.add(PlayerMenu.instance.eatButton);
 		drinkButton = new FlxButton(100, 60, "Drink", drink);
-		PlayState.instance.add(drinkButton);
+		PlayState.instance.add(PlayerMenu.instance.drinkButton);
 		currentAP = new FlxButton(100, 10, "");
-		PlayState.instance.add(currentAP);
+		PlayState.instance.add(PlayerMenu.instance.currentAP);
 		
 	}
 	public function updatePlayerMenu()
@@ -55,6 +55,50 @@ class PlayerMenu
 			PlayState.instance.remove(endDayButton);
 			
 		}
+		var water = 0;
+		var food = 0;
+		for (i in 0...Inventory.instance.playerInv.length)
+		{
+			var x = Inventory.instance.playerInv[i];
+			switch x
+			{
+				case 0: water += 1;
+				case 1: food += 1;
+			}
+		}
+		if (water >= 1 && food >= 1 && Player.instance.actionPoints < 6)
+		{
+			PlayState.instance.add(PlayerMenu.instance.drinkButton);
+			PlayState.instance.add(PlayerMenu.instance.eatButton);
+		}
+		else if (water >= 1 && food == 0 && Player.instance.actionPoints < 6)
+		{
+			PlayState.instance.add(PlayerMenu.instance.drinkButton);
+			PlayState.instance.remove(PlayerMenu.instance.eatButton);
+		}
+		else if (water == 0 && food >= 1 && Player.instance.actionPoints < 6)
+		{
+			PlayState.instance.remove(PlayerMenu.instance.drinkButton);
+			PlayState.instance.add(PlayerMenu.instance.eatButton);
+		}
+		else if (water == 0 && food == 0)
+		{
+			PlayState.instance.remove(PlayerMenu.instance.drinkButton);
+			PlayState.instance.remove(PlayerMenu.instance.eatButton);
+		}
+		else if (Player.instance.actionPoints == 6)
+		{
+			PlayState.instance.remove(PlayerMenu.instance.drinkButton);
+			PlayState.instance.remove(PlayerMenu.instance.eatButton);
+		}
+		if (PlayerMenu.instance.drinkButton.text == "Can't drink")
+		{
+			PlayState.instance.remove(PlayerMenu.instance.drinkButton);
+		}
+		if (PlayerMenu.instance.eatButton.text == "Can't eat")
+		{
+			PlayState.instance.remove(PlayerMenu.instance.eatButton);
+		}
 	}
 	function eat():Void
 	{
@@ -62,6 +106,17 @@ class PlayerMenu
 		{
 			Player.instance.updatePlayerActions(6);
 			eatButton.text = "Can't eat";
+			
+			for (i in 0...Inventory.instance.playerInv.length)
+			{
+				var x = Inventory.instance.playerInv[i];
+				if (x == 1)
+				{
+					Inventory.instance.playerInv.splice(i, 1);
+					Inventory.instance.updateInventory();
+					break;
+				}
+			}
 		}
 	}
 	function drink():Void
@@ -70,6 +125,17 @@ class PlayerMenu
 		{
 			Player.instance.updatePlayerActions(6);
 			drinkButton.text = "Can't drink";
+			
+			for (i in 0...Inventory.instance.playerInv.length)
+			{
+				var x = Inventory.instance.playerInv[i];
+				if (x == 0)
+				{
+					Inventory.instance.playerInv.splice(i, 1);
+					Inventory.instance.updateInventory();
+					break;
+				}
+			}
 		}
 	}
 }

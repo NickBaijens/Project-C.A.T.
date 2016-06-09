@@ -56,7 +56,6 @@ class Tile extends FlxSprite
 				updateTile();
 				genRandomResource();
 				harvestResourceBttnUpdate();
-				PlayerMenu.instance.updatePlayerMenu(); //update display of end day button
 				
 				player.playerMoved = false;
 			}

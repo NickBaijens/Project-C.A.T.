@@ -58,7 +58,8 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		Player.instance.currentTile.harvestResourceBttnTextUpdate();
-		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;	
+		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;
+		PlayerMenu.instance.updatePlayerMenu();
 		Upgrades.instance.updateDisplays();
 		getUpgradeRequirements();
 	}
