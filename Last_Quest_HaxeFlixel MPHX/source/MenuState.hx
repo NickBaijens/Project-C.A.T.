@@ -7,14 +7,23 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 
+
 class MenuState extends FlxState
 {
+	
+	
 	override public function create():Void
 	{
 		super.create();
 		add(new FlxButton(5, 0, "Start Game", startGame));
-		add(new FlxButton(5, 20, "Options", showOptions));
-		add(new FlxButton(5, 40, "Exit", exitGame));
+		add(new FlxButton(5, 20, "Start Server", startServer));
+		add(new FlxButton(5, 40, "Options", showOptions));
+		add(new FlxButton(5, 60, "Exit", exitGame));
+	}
+	
+	function startServer():Void
+	{
+		FlxG.switchState(new ServerState());
 	}
 	
 	function exitGame():Void
