@@ -1,4 +1,5 @@
 package;
+
 import flixel.FlxSprite;
 import flixel.FlxG;
 import openfl.geom.Point;

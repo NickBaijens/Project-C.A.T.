@@ -4,6 +4,7 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxColor;
@@ -12,6 +13,10 @@ import flixel.input.mouse.FlxMouseEventManager;
 
 class PlayState extends FlxState
 {
+	var clientSocket:mphx.client.Client;
+	public var allNetPlayers: FlxGroup;
+	var netplayers = new Map<String,PlayerData>();
+	
 	public var day: Int = 1;
 	public static var instance : PlayState;
 	
@@ -29,6 +34,19 @@ class PlayState extends FlxState
 	{
 		instance = this;
 		super.create();
+		FlxG.autoPause = false;
+	
+		clientSocket = new mphx.client.Client("127.0.0.1",8000);
+		clientSocket.connect();
+		trace(clientSocket.onConnectionError);
+	
+		var playerData:PlayerData = {
+			x: 100,
+			y: 100,
+			id: "player"+Math.random()*10000
+		};
+
+		//clientSocket.send("Join",playerData);
 		
 		cameraFocus = new FlxSprite();
 		cameraFocus.makeGraphic(1, 1, FlxColor.TRANSPARENT);
@@ -40,6 +58,7 @@ class PlayState extends FlxState
 		FlxG.plugins.add(new FlxMouseEventManager());	
 		map = new WorldMap();
 		player = new Player(map.tiles[946]);
+		//netplayers.add(player);
 		
 		playerMenu = new PlayerMenu();
 		upgrades = new Upgrades();
