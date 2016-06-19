@@ -25,6 +25,8 @@ class PlayState extends FlxState
 	public var playerMenu : PlayerMenu;
 	public var upgrades : Upgrades;
 	
+	public var menuButton : FlxButton;
+	
 	override public function create():Void
 	{
 		instance = this;
@@ -45,7 +47,9 @@ class PlayState extends FlxState
 		upgrades = new Upgrades();
 		time = new Time();
 		resource = new Resource();		
-		add(new FlxButton(10, 85, "Menu", showMenu));
+		menuButton = new FlxButton(10, 105, "\nExit", showMenu);
+		menuButton.loadGraphic("assets/images/UI/baseButtonS.png", false, 80, 33);
+		this.add(menuButton);
 		PlayState.instance.map.tiles[945].tileInv = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5];
 	}
 	
@@ -58,7 +62,8 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		Player.instance.currentTile.harvestResourceBttnTextUpdate();
-		PlayerMenu.instance.currentAP.text = "AP:  " + Player.instance.actionPoints;
+		PlayerMenu.instance.currentAP.text = "\nAP:  " + Player.instance.actionPoints;
+		PlayerMenu.instance.positionDisplay.text = "\nx: " +  Player.instance.currentTile.xCord + " y: " + Player.instance.currentTile.yCord;
 		PlayerMenu.instance.updatePlayerMenu();
 		Upgrades.instance.updateDisplays();
 		getUpgradeRequirements();
@@ -76,10 +81,10 @@ class PlayState extends FlxState
 		{
 			day += 1;
 			Upgrades.instance.attackValue += Math.floor(10 + (10 * day));
-			player.updatePlayerActions(6);
+			player.updatePlayerActions(Player.instance.maxAP);
 			trace("Day: " + day);
-			PlayerMenu.instance.eatButton.text = "Eat";
-			PlayerMenu.instance.drinkButton.text = "Drink";
+			PlayerMenu.instance.eatButton.text = "\nEat";
+			PlayerMenu.instance.drinkButton.text = "\nDrink";
 		}
 	}
 	

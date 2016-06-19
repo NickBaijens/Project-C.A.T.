@@ -50,11 +50,14 @@ class Upgrades
 		
 		defenceValue = 0;
 		attackValue = 0;
-		upgradeBttn = new FlxButton(190, 10, "Build Upgrade", setResources);
+		upgradeBttn = new FlxButton(190, 0, "\nBuild Upgrade", setResources);
+		upgradeBttn.loadGraphic("assets/images/UI/baseButtonS.png", false, 80, 33);
 		defenceValueDisplay = new FlxButton(190, 35, "");
-		attackValueDisplay = new FlxButton(190, 60, "");
+		defenceValueDisplay.loadGraphic("assets/images/UI/baseButtonS.png", false, 80, 33);
+		attackValueDisplay = new FlxButton(190, 70, "");
+		attackValueDisplay.loadGraphic("assets/images/UI/baseButtonS.png", false, 80, 33);
 		requirementsDisplay = new FlxButton(280, 10, "");
-		requirementsDisplay.loadGraphic("assets/images/UI/test.png", false, 100, 240);
+		requirementsDisplay.loadGraphic("assets/images/UI/upgradeRequirements.png", false, 100, 240);
 		
 		PlayState.instance.add(Upgrades.instance.upgradeBttn);
 		PlayState.instance.add(defenceValueDisplay);
@@ -201,7 +204,7 @@ class Upgrades
 	{
 		if (Player.instance.currentTile == PlayState.instance.map.tiles[990])
 		{
-			upgradeBttn.text = "Build Upgrade";
+			upgradeBttn.text = "\nBuild Upgrade";
 			PlayState.instance.add(Upgrades.instance.upgradeBttn);
 			requirementsDisplay.text = "Upgrade Requirements:\n" + "Water: x" + reqWater + "\n"
 			+ "Food: x" + reqFood + "\n"
@@ -216,8 +219,8 @@ class Upgrades
 			PlayState.instance.remove(Upgrades.instance.upgradeBttn);
 			PlayState.instance.remove(Upgrades.instance.requirementsDisplay);
 		}
-		defenceValueDisplay.text = "Defence: " + defenceValue;
-		attackValueDisplay.text = "Attack: " + attackValue;
+		defenceValueDisplay.text = "\nDefence: " + defenceValue;
+		attackValueDisplay.text = "\nAttack: " + attackValue;
 		
 	}
 	

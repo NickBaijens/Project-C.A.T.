@@ -18,6 +18,8 @@ class Tile extends FlxSprite
 	var discovered : Bool = false;
 	public var type: String = types[1];
 	public var instanceID: Int = 0;
+	public var xCord:Int;
+	public var yCord:Int;
 	
 	public function new(tiletype:Int) 
 	{
@@ -133,15 +135,15 @@ class Tile extends FlxSprite
 	{
 		if (Player.instance.actionPoints <= 0)
 		{
-			PlayerMenu.instance.harvestButton.text = "Can't harvest";
+			PlayerMenu.instance.harvestButton.text = "\nCan't harvest";
 		}
 		else if (Player.instance.actionPoints >= 1)
 		{
-			PlayerMenu.instance.harvestButton.text = "Harvest";
+			PlayerMenu.instance.harvestButton.text = "\nHarvest";
 		}
 		if (Player.instance.currentTile.maxHarvestNum <= 0)
 		{
-			PlayerMenu.instance.harvestButton.text = "Can't harvest";
+			PlayerMenu.instance.harvestButton.text = "\nCan't harvest";
 		}
 	}
 	public function addResource():Void

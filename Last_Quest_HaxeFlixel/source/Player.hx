@@ -15,6 +15,7 @@ class Player extends FlxSprite
 	public var playerMoved : Bool = false;
 	
 	public var actionPoints:Int = 0;
+	public var maxAP:Int = 9; //boosted to 9 for SP demo
 	var apBttnTest: FlxButton;
 	
 	var player = new FlxSprite();
@@ -43,8 +44,8 @@ class Player extends FlxSprite
 		
 		//update camera position
 		PlayState.instance.cameraFocus.x = this.x;
+		updatePlayerActions(maxAP);
 		PlayState.instance.cameraFocus.y = this.y;
-		updatePlayerActions(6);
 		//Test buttons!
 		//apBttnTest = new FlxButton(10, 10, "add 6 ap", updatePlayerActions.bind(6));
 		//PlayState.instance.add(apBttnTest);
@@ -70,6 +71,7 @@ class Player extends FlxSprite
 				//refocus camera
 				PlayState.instance.cameraFocus.x = this.x;
 				PlayState.instance.cameraFocus.y = this.y;
+				
 				actionPoints -= 1;
 				playerMoved = true;
 				lastTile = currentTile;
@@ -88,9 +90,12 @@ class Player extends FlxSprite
 				//refocus camera
 				PlayState.instance.cameraFocus.x = this.x;
 				PlayState.instance.cameraFocus.y = this.y;
+				
 				playerMoved = true;
 				lastTile = currentTile;
 				currentTile = moveToTile;
+				
+				
 			}
 			//leaving town
 			else if (moveToTile.type != "Town NW tile 128x128.png" && moveToTile.type != "Town NE tile 128x128.png" && moveToTile.type != "Town SW tile 128x128.png" && moveToTile.type != "Town SE tile 128x128.png")
@@ -105,6 +110,7 @@ class Player extends FlxSprite
 					//refocus camera
 					PlayState.instance.cameraFocus.x = this.x;
 					PlayState.instance.cameraFocus.y = this.y;
+					
 					actionPoints -= 1;
 					playerMoved = true;
 					lastTile = currentTile;
@@ -121,7 +127,7 @@ class Player extends FlxSprite
 	public function updatePlayerActions(amount: Int):Void
 	{
 		actionPoints += amount;
-		actionPoints = actionPoints > 6?6:actionPoints;
+		actionPoints = actionPoints > maxAP?maxAP:actionPoints;
 	}
 	
 	public function addResource(ID:Int):Void
@@ -143,7 +149,7 @@ class Player extends FlxSprite
 			//trace(currentTile.type);
 			//create background
 			var invBG = new FlxButton(1020, 150, "");
-			invBG.loadGraphic("assets/images/UI/test.png", false, 126, 126);
+			invBG.loadGraphic("assets/images/UI/tileInv.png", false, 126, 126);
 			PlayState.instance.add(invBG);
 			tileInvUI.push(invBG);
 			
